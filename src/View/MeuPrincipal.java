@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication1;
+package View;
 
 /**
  *
@@ -47,7 +47,6 @@ public class MeuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("                                                                    Sistema Patrimônio");
-        setPreferredSize(new java.awt.Dimension(640, 480));
         setSize(new java.awt.Dimension(615, 0));
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
