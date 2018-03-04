@@ -102,7 +102,7 @@ public class PatrimonioDAO {
             stmt.setFloat(7, patrimonio.getValorPatrimonio());
             stmt.setString(8, patrimonio.getModAquPatrimonio());
             stmt.setString(9, patrimonio.getLocalPatrimonio());
-            stmt.setBoolean(10, patrimonio.getBaixaPatrimonio());
+            stmt.setBoolean(10, patrimonio.isBaixaPatrimonio());
             stmt.setInt(11, patrimonio.getCodPatrimonio());
             stmt.executeUpdate();
         } catch (SQLException ex) {
@@ -126,7 +126,7 @@ public class PatrimonioDAO {
             stmt.setFloat(7, patrimonio.getValorPatrimonio());
             stmt.setString(8, patrimonio.getModAquPatrimonio());
             stmt.setString(9, patrimonio.getLocalPatrimonio());
-            stmt.setBoolean(10, patrimonio.getBaixaPatrimonio());
+            stmt.setBoolean(10, patrimonio.isBaixaPatrimonio());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
         } catch (SQLException ex) {
