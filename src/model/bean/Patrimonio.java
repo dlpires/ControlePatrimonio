@@ -5,6 +5,9 @@
  */
 package model.bean;
 
+import java.util.ArrayList;
+import model.dao.PatrimonioDAO;
+
 /**
  *
  * @author dlpires
@@ -200,23 +203,23 @@ public class Patrimonio {
     //MÉTODOS 
     
     public void Cadastrar(){
-        
+      
     }
     
-    public void Consultar(){
-        
+    public Patrimonio Consultar(){
+        return PatrimonioDAO.load(this);
     }
     
     public void Alterar(){
-        
+        PatrimonioDAO.update(this);
     }
     
     public void Excluir(){
-        
+        PatrimonioDAO.delete(this);
     }
     
-    public void GerarRelatorio(){
-        
+    public ArrayList<Patrimonio>  GerarRelatorio(){
+        return PatrimonioDAO.readAll();
     }
     
     public void GerarRelatorioBaixa(){
