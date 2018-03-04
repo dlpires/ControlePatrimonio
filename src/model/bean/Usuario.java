@@ -17,6 +17,9 @@ public class Usuario {
     private String NomeUsuario;
     private String FuncaoUsuario;
     private String CellUsuario;
+
+    public Usuario() {
+    }
     
     /**
      * @return the LoginUsuario
