@@ -2,6 +2,23 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/JavaApplication1.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/bean/Usuario.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/dao/PatrimonioDAO.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/bean/Administrador.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/dao/AdministradorDAO.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/ConsultarUser.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/bean/Patrimonio.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/MeuPrincipal.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/CadastrarPatri.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/CadastrarUser.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/Login.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/RelatorioPatrimonio.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/dao/UsuarioDAO.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/model/dao/ConnectionFactory.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/BaixaPatrimonial.java</file>
+            <file>file:/D:/Documentos/NetBeansProjects/ControlePatrimonio/src/View/ConsultarPatri.java</file>
+        </group>
     </open-files>
 </project-private>

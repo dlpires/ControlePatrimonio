@@ -76,6 +76,11 @@ public class MeuPrincipal extends javax.swing.JFrame {
         jMenu1.add(btnAlterarUsuario);
 
         btnExcluirUsuario.setText("Excluir");
+        btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(btnExcluirUsuario);
 
         jMenuBar1.add(jMenu1);
@@ -141,6 +146,10 @@ public class MeuPrincipal extends javax.swing.JFrame {
     private void btnSairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSairMenuActionPerformed
+
+    private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

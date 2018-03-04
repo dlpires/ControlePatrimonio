@@ -116,7 +116,7 @@ public class Usuario {
     /**
      * @param NivelAcesso
      */
-    public void setNivelUsuario(int NivelAcesso) {
+    public void setNivelAcesso(int NivelAcesso) {
         this.NivelAcesso = NivelAcesso;
     }
 }

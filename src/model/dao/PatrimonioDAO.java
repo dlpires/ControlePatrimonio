@@ -10,10 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import javax.swing.JOptionPane;
->>>>>>> a68f6455dd13d079c5229640035b6bf55b2f31d2
 import model.bean.Patrimonio;
 
 /**
@@ -21,35 +18,6 @@ import model.bean.Patrimonio;
  * @author Matheus Henrique
  */
 public class PatrimonioDAO {
-<<<<<<< HEAD
-     private void load(Patrimonio patrimonio){
-		Connection con = ConnectionFactory.getConnection();
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try{
-			stmt = con.prepareStatement("SELECT * FROM patrimonio WHERE cod_patrimonio = ?");
-			stmt.setInt(1, patrimonio.getCodPatrimonio());
-			rs = stmt.executeQuery();
-			rs.next();
-			patrimonio.setNumProcEntrada(rs.getInt("num_proc_entrada"));
-			patrimonio.setNumNotaFiscal(rs.getInt("num_nota_fiscal"));
-			patrimonio.setNomePatrimonio(rs.getString("nome_patrimonio"));
-			patrimonio.setMarcaPatrimonio(rs.getString("marca_patrimonio"));
-			patrimonio.setModeloPatrimonio(rs.getString("modelo_patrimonio"));
-			patrimonio.setNumSeriePatrimonio(rs.getInt("num_serie_patrimonio"));
-			patrimonio.setValorPatrimonio(rs.getFloat("valor_patrimonio"));
-			patrimonio.setModAquPatrimonio(rs.getString("mod_aqu_patrimonio"));
-			patrimonio.setLocalPatrimonio(rs.getString("local_patrimonio"));
-			patrimonio.setBaixaPatrimonio(rs.getBoolean("baixa_patrimonio"));
-		} catch (SQLException ex) {
-			FxDialogs.showException("Erro de Leitura!", getClass().getSimpleName() + " - " + ex.getMessage(), ex);
-		}
-		finally{
-			ConnectionFactory.closeConnection(con, stmt, rs);
-		}
-	}
-=======
->>>>>>> a68f6455dd13d079c5229640035b6bf55b2f31d2
 
     public static Patrimonio load(Patrimonio patrimonio) {
         Connection con = ConnectionFactory.getConnection();
@@ -88,7 +56,7 @@ public class PatrimonioDAO {
         return patrimoniosList;
     }
 
-    public static void save(Patrimonio patrimonio) {
+    public static void update(Patrimonio patrimonio) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
@@ -170,22 +138,4 @@ public class PatrimonioDAO {
 
         return patrimonio;
     }
-
-<<<<<<< HEAD
-	public void delete(Patrimonio patrimonio){
-		Connection con = ConnectionFactory.getConnection();
-		PreparedStatement stmt = null;
-		try{
-			stmt = con.prepareStatement("DELETE FROM patrimonio WHERE cod_patrimonio = ?");
-			stmt.setInt(1, patrimonio.getCodPatrimonio());
-			stmt.executeUpdate();
-		} catch (SQLException ex) {
-			FxDialogs.showException("Erro de Exclusão!", getClass().getSimpleName() + " - " + ex.getMessage(), ex);
-		}
-		finally{
-			ConnectionFactory.closeConnection(con, stmt);
-		}
-	}
-=======
->>>>>>> a68f6455dd13d079c5229640035b6bf55b2f31d2
 }
