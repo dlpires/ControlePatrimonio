@@ -17,6 +17,7 @@ public class Usuario {
     private String NomeUsuario;
     private String FuncaoUsuario;
     private String CellUsuario;
+    private int NivelAcesso;
 
     public Usuario() {
     }
@@ -103,5 +104,19 @@ public class Usuario {
      */
     public void setCellUsuario(String CellUsuario) {
         this.CellUsuario = CellUsuario;
+    }
+
+    /**
+     * @return the NivelUsuario
+     */
+    public int getNivelAcesso() {
+        return NivelAcesso;
+    }
+
+    /**
+     * @param NivelAcesso
+     */
+    public void setNivelUsuario(int NivelAcesso) {
+        this.NivelAcesso = NivelAcesso;
     }
 }
