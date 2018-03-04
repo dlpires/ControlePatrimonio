@@ -144,14 +144,14 @@ public class Patrimonio {
     /**
      * @return the ValorPatrimonio
      */
-    public double getValorPatrimonio() {
+    public float getValorPatrimonio() {
         return ValorPatrimonio;
     }
 
     /**
      * @param ValorPatrimonio the ValorPatrimonio to set
      */
-    public void setValorPatrimonio(double ValorPatrimonio) {
+    public void setValorPatrimonio(float ValorPatrimonio) {
         this.ValorPatrimonio = ValorPatrimonio;
     }
 
