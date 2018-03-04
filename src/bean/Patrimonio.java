@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.bean;
+package bean;
 
 import java.util.ArrayList;
-import model.dao.PatrimonioDAO;
+import dao.PatrimonioDAO;
 
 /**
  *
