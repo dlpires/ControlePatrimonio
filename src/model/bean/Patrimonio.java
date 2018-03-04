@@ -25,6 +25,9 @@ public class Patrimonio {
     private String ModAquPatrimonio;
     private String LocalPatrimonio;
     private boolean BaixaPatrimonio;
+
+    public Patrimonio() {
+    }
     
     /**
      * @return the CodPatrimonio
