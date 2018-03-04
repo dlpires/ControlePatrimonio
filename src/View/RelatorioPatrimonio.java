@@ -29,7 +29,7 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabRelatPatri = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
@@ -39,9 +39,9 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("RELATÓRIO DE PATRIMÔNIO");
 
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabRelatPatri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabRelatPatri.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
+        tabRelatPatri.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -73,19 +73,19 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
                 "Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(110);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(120);
-            jTable1.getColumnModel().getColumn(8).setPreferredWidth(65);
-            jTable1.getColumnModel().getColumn(9).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(10).setPreferredWidth(40);
+        jScrollPane1.setViewportView(tabRelatPatri);
+        if (tabRelatPatri.getColumnModel().getColumnCount() > 0) {
+            tabRelatPatri.getColumnModel().getColumn(0).setPreferredWidth(35);
+            tabRelatPatri.getColumnModel().getColumn(1).setPreferredWidth(90);
+            tabRelatPatri.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tabRelatPatri.getColumnModel().getColumn(3).setPreferredWidth(110);
+            tabRelatPatri.getColumnModel().getColumn(4).setPreferredWidth(60);
+            tabRelatPatri.getColumnModel().getColumn(5).setPreferredWidth(60);
+            tabRelatPatri.getColumnModel().getColumn(6).setPreferredWidth(35);
+            tabRelatPatri.getColumnModel().getColumn(7).setPreferredWidth(120);
+            tabRelatPatri.getColumnModel().getColumn(8).setPreferredWidth(65);
+            tabRelatPatri.getColumnModel().getColumn(9).setPreferredWidth(35);
+            tabRelatPatri.getColumnModel().getColumn(10).setPreferredWidth(40);
         }
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -137,6 +137,6 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabRelatPatri;
     // End of variables declaration//GEN-END:variables
 }

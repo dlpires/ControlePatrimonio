@@ -10,13 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import model.bean.Patrimonio;
 
 /**
  *
  * @author Matheus Henrique
  */
 public class PatrimonioDAO {
-     /* private void load(Patrimonio patrimonio){
+     private void load(Patrimonio patrimonio){
 		Connection con = ConnectionFactory.getConnection();
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -129,5 +130,5 @@ public class PatrimonioDAO {
 		finally{
 			ConnectionFactory.closeConnection(con, stmt);
 		}
-	}*/
+	}
 }

@@ -27,82 +27,82 @@ public class MeuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCadastrarMenu = new javax.swing.JButton();
+        btnConsultarMenu = new javax.swing.JButton();
+        btnSairMenu = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        btnCadastrarUsuario = new javax.swing.JMenuItem();
+        btnConsultarUsuario = new javax.swing.JMenuItem();
+        btnAlterarUsuario = new javax.swing.JMenuItem();
+        btnExcluirUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        btnCadastrarPatri = new javax.swing.JMenuItem();
+        btnConsultarPatri = new javax.swing.JMenuItem();
+        btnAlterarPatri = new javax.swing.JMenuItem();
+        btnExcluirPatri = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
+        btnPatriRelat = new javax.swing.JMenuItem();
+        btnBaixaPatriRelat = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("                                                                    Sistema Patrimônio");
         setSize(new java.awt.Dimension(615, 0));
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton1.setText("Cadastrar");
+        btnCadastrarMenu.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btnCadastrarMenu.setText("Cadastrar");
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jButton2.setText("Consultar");
+        btnConsultarMenu.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        btnConsultarMenu.setText("Consultar");
 
-        jButton3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 0, 0));
-        jButton3.setText("Sair");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSairMenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnSairMenu.setForeground(new java.awt.Color(255, 0, 0));
+        btnSairMenu.setText("Sair");
+        btnSairMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSairMenuActionPerformed(evt);
             }
         });
 
         jMenu1.setText("Usuário");
 
-        jMenuItem1.setText("Cadastrar");
-        jMenu1.add(jMenuItem1);
+        btnCadastrarUsuario.setText("Cadastrar");
+        jMenu1.add(btnCadastrarUsuario);
 
-        jMenuItem3.setText("Consultar");
-        jMenu1.add(jMenuItem3);
+        btnConsultarUsuario.setText("Consultar");
+        jMenu1.add(btnConsultarUsuario);
 
-        jMenuItem2.setText("Alterar");
-        jMenu1.add(jMenuItem2);
+        btnAlterarUsuario.setText("Alterar");
+        jMenu1.add(btnAlterarUsuario);
 
-        jMenuItem4.setText("Excluir");
-        jMenu1.add(jMenuItem4);
+        btnExcluirUsuario.setText("Excluir");
+        jMenu1.add(btnExcluirUsuario);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Patrimônio");
 
-        jMenuItem5.setText("Cadastrar");
-        jMenu2.add(jMenuItem5);
+        btnCadastrarPatri.setText("Cadastrar");
+        jMenu2.add(btnCadastrarPatri);
 
-        jMenuItem6.setText("Consultar");
-        jMenu2.add(jMenuItem6);
+        btnConsultarPatri.setText("Consultar");
+        jMenu2.add(btnConsultarPatri);
 
-        jMenuItem7.setText("Alterar");
-        jMenu2.add(jMenuItem7);
+        btnAlterarPatri.setText("Alterar");
+        jMenu2.add(btnAlterarPatri);
 
-        jMenuItem8.setText("Excluir");
-        jMenu2.add(jMenuItem8);
+        btnExcluirPatri.setText("Excluir");
+        jMenu2.add(btnExcluirPatri);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Relatórios");
 
-        jMenuItem9.setText("Patrimônio");
-        jMenu3.add(jMenuItem9);
+        btnPatriRelat.setText("Patrimônio");
+        jMenu3.add(btnPatriRelat);
 
-        jMenuItem10.setText("Baixa Patrimonial");
-        jMenu3.add(jMenuItem10);
+        btnBaixaPatriRelat.setText("Baixa Patrimonial");
+        jMenu3.add(btnBaixaPatriRelat);
 
         jMenuBar1.add(jMenu3);
 
@@ -115,51 +115,51 @@ public class MeuPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnConsultarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCadastrarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(180, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSairMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(95, 95, 95)
+                .addComponent(btnCadastrarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsultarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(btnSairMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnSairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnSairMenuActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JMenuItem btnAlterarPatri;
+    private javax.swing.JMenuItem btnAlterarUsuario;
+    private javax.swing.JMenuItem btnBaixaPatriRelat;
+    private javax.swing.JButton btnCadastrarMenu;
+    private javax.swing.JMenuItem btnCadastrarPatri;
+    private javax.swing.JMenuItem btnCadastrarUsuario;
+    private javax.swing.JButton btnConsultarMenu;
+    private javax.swing.JMenuItem btnConsultarPatri;
+    private javax.swing.JMenuItem btnConsultarUsuario;
+    private javax.swing.JMenuItem btnExcluirPatri;
+    private javax.swing.JMenuItem btnExcluirUsuario;
+    private javax.swing.JMenuItem btnPatriRelat;
+    private javax.swing.JButton btnSairMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

@@ -31,7 +31,7 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabRelatBaixaPatri = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("                                                                                                                             Relatório  Baixa Patrimonial ");
@@ -47,9 +47,9 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("RELATÓRIO DE BAIXA PATRIMONIAL");
 
-        jTable1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTable1.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabRelatBaixaPatri.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tabRelatBaixaPatri.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
+        tabRelatBaixaPatri.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null},
@@ -81,19 +81,19 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
                 "Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(90);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(110);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(60);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(7).setPreferredWidth(120);
-            jTable1.getColumnModel().getColumn(8).setPreferredWidth(65);
-            jTable1.getColumnModel().getColumn(9).setPreferredWidth(35);
-            jTable1.getColumnModel().getColumn(10).setPreferredWidth(40);
+        jScrollPane1.setViewportView(tabRelatBaixaPatri);
+        if (tabRelatBaixaPatri.getColumnModel().getColumnCount() > 0) {
+            tabRelatBaixaPatri.getColumnModel().getColumn(0).setPreferredWidth(35);
+            tabRelatBaixaPatri.getColumnModel().getColumn(1).setPreferredWidth(90);
+            tabRelatBaixaPatri.getColumnModel().getColumn(2).setPreferredWidth(60);
+            tabRelatBaixaPatri.getColumnModel().getColumn(3).setPreferredWidth(110);
+            tabRelatBaixaPatri.getColumnModel().getColumn(4).setPreferredWidth(60);
+            tabRelatBaixaPatri.getColumnModel().getColumn(5).setPreferredWidth(60);
+            tabRelatBaixaPatri.getColumnModel().getColumn(6).setPreferredWidth(35);
+            tabRelatBaixaPatri.getColumnModel().getColumn(7).setPreferredWidth(120);
+            tabRelatBaixaPatri.getColumnModel().getColumn(8).setPreferredWidth(65);
+            tabRelatBaixaPatri.getColumnModel().getColumn(9).setPreferredWidth(35);
+            tabRelatBaixaPatri.getColumnModel().getColumn(10).setPreferredWidth(40);
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -138,6 +138,6 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabRelatBaixaPatri;
     // End of variables declaration//GEN-END:variables
 }
