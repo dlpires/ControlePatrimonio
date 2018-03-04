@@ -203,7 +203,7 @@ public class Patrimonio {
     //MÉTODOS 
     
     public void Cadastrar(){
-      
+        PatrimonioDAO.create(this);
     }
     
     public Patrimonio Consultar(){
