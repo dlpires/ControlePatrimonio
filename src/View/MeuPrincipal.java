@@ -67,9 +67,29 @@ public class MeuPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Usuário");
 
         btnCadastrarUsuario.setText("Cadastrar");
+        btnCadastrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCadastrarUsuarioMouseClicked(evt);
+            }
+        });
+        btnCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(btnCadastrarUsuario);
 
         btnConsultarUsuario.setText("Consultar");
+        btnConsultarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConsultarUsuarioMouseClicked(evt);
+            }
+        });
+        btnConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarUsuarioActionPerformed(evt);
+            }
+        });
         jMenu1.add(btnConsultarUsuario);
 
         btnAlterarUsuario.setText("Alterar");
@@ -150,6 +170,25 @@ public class MeuPrincipal extends javax.swing.JFrame {
     private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
+
+    private void btnCadastrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioMouseClicked
+         
+        
+    }//GEN-LAST:event_btnCadastrarUsuarioMouseClicked
+
+    private void btnConsultarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioMouseClicked
+        
+    }//GEN-LAST:event_btnConsultarUsuarioMouseClicked
+
+    private void btnCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioActionPerformed
+        CadastrarUser cvu = new CadastrarUser();
+        cvu.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
+
+    private void btnConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioActionPerformed
+        ConsultarUser cvu = new ConsultarUser();
+        cvu.setVisible(true);
+    }//GEN-LAST:event_btnConsultarUsuarioActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

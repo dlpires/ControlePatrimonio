@@ -18,6 +18,28 @@ import bean.Usuario;
  * @author Matheus Henrique
  */
 public class UsuarioDAO {
+    
+    public static boolean doLogin(String user, String pass){
+        boolean valid = false;
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT login_usuario FROM usuario WHERE login_usuario = ? and senha_usuario = ?");
+            stmt.setString(1, user);
+            stmt.setString(2, pass);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+              valid = true; 
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return valid;
+        
+    }
 
     public static Usuario load(Usuario usuario) {
         Connection con = ConnectionFactory.getConnection();

@@ -5,6 +5,8 @@
  */
 package bean;
 
+import dao.UsuarioDAO;
+
 /**
  *
  * @author dlpires
@@ -20,6 +22,10 @@ public class Usuario {
     private int NivelAcesso;
 
     public Usuario() {
+    }
+    
+    public static boolean doLogin(String user, String pass){
+        return UsuarioDAO.doLogin(user, pass);
     }
     
     /**

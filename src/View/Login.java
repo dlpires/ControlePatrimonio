@@ -5,6 +5,9 @@
  */
 package View;
 
+import bean.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neto-PC
@@ -52,6 +55,11 @@ public class Login extends javax.swing.JFrame {
         btnEntrarLogin.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnEntrarLogin.setText("Entrar");
         btnEntrarLogin.setName("btnEntrarLogin"); // NOI18N
+        btnEntrarLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEntrarLoginMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,6 +101,17 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEntrarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarLoginMouseClicked
+        // TODO add your handling code here:
+        if(Usuario.doLogin(txtUsuarioLogin.getText(), txtSenhaLogin.getText())){
+            MeuPrincipal mp = new MeuPrincipal();
+            mp.setVisible(true);  
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Acesso negado!");
+        }
+    }//GEN-LAST:event_btnEntrarLoginMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
