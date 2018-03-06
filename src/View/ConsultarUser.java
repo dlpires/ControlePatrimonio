@@ -5,6 +5,9 @@
  */
 package View;
 
+import dao.UsuarioDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neto-PC
@@ -17,6 +20,11 @@ public class ConsultarUser extends javax.swing.JFrame {
     public ConsultarUser() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        
+        //está desativado porque no momento não possui serventia
+        labelNome.setEnabled(false);
+        txtNomeConsUser.setEnabled(false);
     }
 
     /**
@@ -30,7 +38,7 @@ public class ConsultarUser extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         txtLoginConsUser = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        labelNome = new javax.swing.JLabel();
         txtNomeConsUser = new javax.swing.JTextField();
         btnBuscarConsUser = new javax.swing.JButton();
         btnLimparConsUser = new javax.swing.JButton();
@@ -42,19 +50,34 @@ public class ConsultarUser extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Login:");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Nome:");
+        labelNome.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        labelNome.setText("Nome:");
 
         btnBuscarConsUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnBuscarConsUser.setForeground(new java.awt.Color(0, 102, 255));
         btnBuscarConsUser.setText("Buscar");
+        btnBuscarConsUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarConsUserActionPerformed(evt);
+            }
+        });
 
         btnLimparConsUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparConsUser.setText("Limpar");
+        btnLimparConsUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparConsUserActionPerformed(evt);
+            }
+        });
 
         btnCancelarConsUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancelarConsUser.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelarConsUser.setText("Cancelar");
+        btnCancelarConsUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarConsUserActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,7 +95,7 @@ public class ConsultarUser extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3)
+                            .addComponent(labelNome)
                             .addComponent(jLabel1)
                             .addComponent(txtLoginConsUser)
                             .addComponent(txtNomeConsUser, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -86,7 +109,7 @@ public class ConsultarUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLoginConsUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(labelNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNomeConsUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -100,13 +123,32 @@ public class ConsultarUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnCancelarConsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConsUserActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarConsUserActionPerformed
+
+    private void btnLimparConsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparConsUserActionPerformed
+        txtLoginConsUser.setText("");
+        txtNomeConsUser.setText("");
+    }//GEN-LAST:event_btnLimparConsUserActionPerformed
+
+    private void btnBuscarConsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsUserActionPerformed
+        if(UsuarioDAO.exists(txtLoginConsUser.getText())){
+            new CadastrarUser(UsuarioDAO.load(txtLoginConsUser.getText())).setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
+        }
+        
+    }//GEN-LAST:event_btnBuscarConsUserActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarConsUser;
     private javax.swing.JButton btnCancelarConsUser;
     private javax.swing.JButton btnLimparConsUser;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel labelNome;
     private javax.swing.JTextField txtLoginConsUser;
     private javax.swing.JTextField txtNomeConsUser;
     // End of variables declaration//GEN-END:variables

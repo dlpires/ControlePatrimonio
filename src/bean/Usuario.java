@@ -132,4 +132,23 @@ public class Usuario {
     public void setNivelAcesso(int NivelAcesso) {
         this.NivelAcesso = NivelAcesso;
     }
+    
+    public void update(){
+        if(verificarCampos()) UsuarioDAO.save(this);
+    }
+    
+    public void delete(){
+        if(verificarCampos()) UsuarioDAO.delete(this);
+    }
+    
+    public void create(){
+        if(verificarCampos()) UsuarioDAO.create(this);
+    }
+    
+    private boolean verificarCampos(){
+        return (!LoginUsuario.equals("")) && (SenhaUsuario.equals(ConfSenhaUsuario)) && 
+                (!NomeUsuario.equals("")) && (!FuncaoUsuario.equals("")) &&
+                (!CellUsuario.equals("")) && (NivelAcesso != 0);
+                        
+    }
 }

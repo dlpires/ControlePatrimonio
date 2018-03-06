@@ -5,11 +5,17 @@
  */
 package View;
 
+import bean.Usuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neto-PC
  */
 public class CadastrarUser extends javax.swing.JFrame {
+
+    String action = "";
+    Usuario user = new Usuario();
 
     /**
      * Creates new form Cadastrar
@@ -17,6 +23,24 @@ public class CadastrarUser extends javax.swing.JFrame {
     public CadastrarUser() {
         initComponents();
         setLocationRelativeTo(null);
+
+        action = "cadastrar";
+
+        btnAlterarUsuario.setVisible(false);
+        btnExcluirUsuario.setVisible(false);
+    }
+
+    public CadastrarUser(Usuario user) {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        this.user = user;
+        inicializarCampos();
+
+        btnOkCadUser.setEnabled(false);
+        txtLoginCadUser.setEnabled(false);
+        
+        action = "alterar";
     }
 
     /**
@@ -46,6 +70,8 @@ public class CadastrarUser extends javax.swing.JFrame {
         btnLimparCadUser = new javax.swing.JButton();
         btnCancelarCadUser = new javax.swing.JButton();
         cbNivelAcessoCadUser = new javax.swing.JComboBox<>();
+        btnExcluirUsuario = new javax.swing.JButton();
+        btnAlterarUsuario = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -78,24 +104,62 @@ public class CadastrarUser extends javax.swing.JFrame {
         btnOkCadUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnOkCadUser.setForeground(new java.awt.Color(0, 102, 255));
         btnOkCadUser.setText("OK");
+        btnOkCadUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkCadUserActionPerformed(evt);
+            }
+        });
 
         btnLimparCadUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparCadUser.setText("Limpar");
+        btnLimparCadUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCadUserActionPerformed(evt);
+            }
+        });
 
         btnCancelarCadUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancelarCadUser.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelarCadUser.setText("Cancelar");
+        btnCancelarCadUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCadUserActionPerformed(evt);
+            }
+        });
 
-        cbNivelAcessoCadUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbNivelAcessoCadUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Usuário", "Administrador" }));
+        cbNivelAcessoCadUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNivelAcessoCadUserActionPerformed(evt);
+            }
+        });
+
+        btnExcluirUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnExcluirUsuario.setForeground(new java.awt.Color(0, 102, 255));
+        btnExcluirUsuario.setText("Excluir");
+        btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirUsuarioActionPerformed(evt);
+            }
+        });
+
+        btnAlterarUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAlterarUsuario.setForeground(new java.awt.Color(0, 102, 255));
+        btnAlterarUsuario.setText("Editar");
+        btnAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarUsuarioActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
@@ -115,8 +179,12 @@ public class CadastrarUser extends javax.swing.JFrame {
                                     .addComponent(txtConfSenhaCadUser)
                                     .addComponent(txtCelCadUser))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 242, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 12, Short.MAX_VALUE)
+                        .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAlterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbNivelAcessoCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,16 +234,104 @@ public class CadastrarUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOkCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimparCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancelarCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
+    private void btnCancelarCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadUserActionPerformed
+        if (action.equals("alterar")) {
+            btnAlterarUsuario.setEnabled(true);
+            btnExcluirUsuario.setEnabled(true);
+            btnOkCadUser.setEnabled(false);
+            inicializarCampos();
+        } else {
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btnCancelarCadUserActionPerformed
+
+    private void btnOkCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadUserActionPerformed
+
+        user.setSenhaUsuario(txtSenhaCadUser.getText());
+        user.setConfSenhaUsuario(txtConfSenhaCadUser.getText());
+        user.setNomeUsuario(txtNomeCadUser.getText());
+        user.setFuncaoUsuario(txtFuncaoCadUser.getText());
+        user.setNivelAcesso(cbNivelAcessoCadUser.getSelectedIndex() + 4);
+        user.setCellUsuario(txtCelCadUser.getText());
+
+        switch (action) {
+            case "alterar":
+                user.update();
+                btnAlterarUsuario.setEnabled(true);
+                btnExcluirUsuario.setEnabled(true);
+                btnOkCadUser.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Usuário alterado!");
+                break;
+            case "cadastrar":
+                user.setLoginUsuario(txtLoginCadUser.getText());
+                user.create();
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
+                break;
+            default:
+                this.dispose();
+                break;
+        }
+    }//GEN-LAST:event_btnOkCadUserActionPerformed
+
+    private void btnLimparCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCadUserActionPerformed
+        if (action.equals("alterar")) {
+            inicializarCampos();
+        } else {
+            txtLoginCadUser.setText("");
+            txtSenhaCadUser.setText("");
+            txtNomeCadUser.setText("");
+            txtConfSenhaCadUser.setText("");
+            txtFuncaoCadUser.setText("");
+            txtCelCadUser.setText("");
+            cbNivelAcessoCadUser.setSelectedIndex(0);
+        }
+
+    }//GEN-LAST:event_btnLimparCadUserActionPerformed
+
+    private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Deseja realmente excluir esse usuário?", "Confirmar exclusão de usuário", JOptionPane.YES_NO_OPTION);
+        if (escolha == JOptionPane.YES_OPTION) {
+            user.delete();
+            this.dispose();
+            JOptionPane.showMessageDialog(null, "Usuário excluido!");
+        }
+    }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
+
+    private void btnAlterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarUsuarioActionPerformed
+        btnAlterarUsuario.setEnabled(false);
+        btnExcluirUsuario.setEnabled(false);
+        btnOkCadUser.setEnabled(true);
+    }//GEN-LAST:event_btnAlterarUsuarioActionPerformed
+
+    private void cbNivelAcessoCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNivelAcessoCadUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbNivelAcessoCadUserActionPerformed
+
+    private void inicializarCampos() {
+        txtLoginCadUser.setText(user.getLoginUsuario());
+        txtSenhaCadUser.setText(user.getSenhaUsuario());
+        txtConfSenhaCadUser.setText(user.getConfSenhaUsuario());
+        txtFuncaoCadUser.setText(user.getFuncaoUsuario());
+        txtNomeCadUser.setText(user.getNomeUsuario());
+        txtCelCadUser.setText(user.getCellUsuario());
+        cbNivelAcessoCadUser.setSelectedIndex(user.getNivelAcesso() - 4);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterarUsuario;
     private javax.swing.JButton btnCancelarCadUser;
+    private javax.swing.JButton btnExcluirUsuario;
     private javax.swing.JButton btnLimparCadUser;
     private javax.swing.JButton btnOkCadUser;
     private javax.swing.JComboBox<String> cbNivelAcessoCadUser;

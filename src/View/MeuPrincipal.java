@@ -18,15 +18,11 @@ public class MeuPrincipal extends javax.swing.JFrame {
      * Creates new form MeuPrincipal
      */
     public MeuPrincipal() {
-        initComponents();
-        setLocationRelativeTo(null);
-        menuUsuario.setVisible(false);
+        initialize();
     }
     
     public MeuPrincipal(Usuario userON) {
-        initComponents();
-        setLocationRelativeTo(null);
-        menuUsuario.setVisible(false);
+        initialize();
         
         this.userON = userON;
         if(this.userON.getNivelAcesso() == 5){
@@ -34,6 +30,15 @@ public class MeuPrincipal extends javax.swing.JFrame {
         }
     }
     
+    private void initialize(){
+        initComponents();
+        setLocationRelativeTo(null);
+        menuUsuario.setVisible(false);
+        
+        //está desativado porque no momento não possui serventia
+        btnAlterarUsuario.setVisible(false);
+        btnExcluirUsuario.setVisible(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,7 +186,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairMenuActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_btnSairMenuActionPerformed
 
     private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
@@ -204,6 +209,8 @@ public class MeuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
 
     private void btnConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioActionPerformed
+        
+        
         ConsultarUser cvu = new ConsultarUser();
         cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         cvu.setVisible(true);
