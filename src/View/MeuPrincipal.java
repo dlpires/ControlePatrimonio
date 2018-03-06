@@ -5,18 +5,35 @@
  */
 package View;
 
+import javax.swing.JFrame;
+import bean.Usuario;
+
 /**
  *
  * @author Neto-PC
  */
 public class MeuPrincipal extends javax.swing.JFrame {
-
+    Usuario userON;
     /**
      * Creates new form MeuPrincipal
      */
     public MeuPrincipal() {
         initComponents();
+        setLocationRelativeTo(null);
+        menuUsuario.setVisible(false);
     }
+    
+    public MeuPrincipal(Usuario userON) {
+        initComponents();
+        setLocationRelativeTo(null);
+        menuUsuario.setVisible(false);
+        
+        this.userON = userON;
+        if(this.userON.getNivelAcesso() == 5){
+            menuUsuario.setVisible(true);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +48,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
         btnConsultarMenu = new javax.swing.JButton();
         btnSairMenu = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        menuUsuario = new javax.swing.JMenu();
         btnCadastrarUsuario = new javax.swing.JMenuItem();
         btnConsultarUsuario = new javax.swing.JMenuItem();
         btnAlterarUsuario = new javax.swing.JMenuItem();
@@ -64,7 +81,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Usuário");
+        menuUsuario.setText("Usuário");
 
         btnCadastrarUsuario.setText("Cadastrar");
         btnCadastrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -77,7 +94,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
                 btnCadastrarUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(btnCadastrarUsuario);
+        menuUsuario.add(btnCadastrarUsuario);
 
         btnConsultarUsuario.setText("Consultar");
         btnConsultarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,10 +107,10 @@ public class MeuPrincipal extends javax.swing.JFrame {
                 btnConsultarUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(btnConsultarUsuario);
+        menuUsuario.add(btnConsultarUsuario);
 
         btnAlterarUsuario.setText("Alterar");
-        jMenu1.add(btnAlterarUsuario);
+        menuUsuario.add(btnAlterarUsuario);
 
         btnExcluirUsuario.setText("Excluir");
         btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +118,9 @@ public class MeuPrincipal extends javax.swing.JFrame {
                 btnExcluirUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(btnExcluirUsuario);
+        menuUsuario.add(btnExcluirUsuario);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuUsuario);
 
         jMenu2.setText("Patrimônio");
 
@@ -182,11 +199,13 @@ public class MeuPrincipal extends javax.swing.JFrame {
 
     private void btnCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioActionPerformed
         CadastrarUser cvu = new CadastrarUser();
+        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         cvu.setVisible(true);
     }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
 
     private void btnConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioActionPerformed
         ConsultarUser cvu = new ConsultarUser();
+        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         cvu.setVisible(true);
     }//GEN-LAST:event_btnConsultarUsuarioActionPerformed
 
@@ -205,9 +224,9 @@ public class MeuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnExcluirUsuario;
     private javax.swing.JMenuItem btnPatriRelat;
     private javax.swing.JButton btnSairMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu menuUsuario;
     // End of variables declaration//GEN-END:variables
 }

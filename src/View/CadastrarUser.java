@@ -16,6 +16,7 @@ public class CadastrarUser extends javax.swing.JFrame {
      */
     public CadastrarUser() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

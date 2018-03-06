@@ -6,6 +6,7 @@
 package View;
 
 import bean.Usuario;
+import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
+        this.setTitle("Login");
     }
 
     /**
@@ -105,8 +108,8 @@ public class Login extends javax.swing.JFrame {
     private void btnEntrarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarLoginMouseClicked
         // TODO add your handling code here:
         if(Usuario.doLogin(txtUsuarioLogin.getText(), txtSenhaLogin.getText())){
-            MeuPrincipal mp = new MeuPrincipal();
-            mp.setVisible(true);  
+
+            new MeuPrincipal(UsuarioDAO.load(txtUsuarioLogin.getText())).setVisible(true);
             this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "Acesso negado!");

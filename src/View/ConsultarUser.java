@@ -16,6 +16,7 @@ public class ConsultarUser extends javax.swing.JFrame {
      */
     public ConsultarUser() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**

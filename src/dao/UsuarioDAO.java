@@ -59,6 +59,25 @@ public class UsuarioDAO {
         }
         return usuario;
     }
+    
+    public static Usuario load(String login) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT * FROM usuario WHERE login_usuario = ?");
+            stmt.setString(1, login);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+              return UsuarioDAO.createInstance(rs); 
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return new Usuario();
+    }
 
     public static ArrayList<Usuario> readAll() {
         Connection con = ConnectionFactory.getConnection();

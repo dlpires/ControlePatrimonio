@@ -23,6 +23,13 @@ public class Usuario {
 
     public Usuario() {
     }
+
+    public Usuario(String LoginUsuario, String SenhaUsuario) {
+        this.LoginUsuario = LoginUsuario;
+        this.SenhaUsuario = SenhaUsuario;
+    }
+    
+    
     
     public static boolean doLogin(String user, String pass){
         return UsuarioDAO.doLogin(user, pass);
