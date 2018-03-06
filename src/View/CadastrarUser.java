@@ -270,13 +270,13 @@ public class CadastrarUser extends javax.swing.JFrame {
                 btnAlterarUsuario.setEnabled(true);
                 btnExcluirUsuario.setEnabled(true);
                 btnOkCadUser.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Usuário alterado!");
+                JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
                 break;
             case "cadastrar":
                 user.setLoginUsuario(txtLoginCadUser.getText());
                 user.create();
                 this.dispose();
-                JOptionPane.showMessageDialog(null, "Usuário cadastrado!");
+                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
                 break;
             default:
                 this.dispose();

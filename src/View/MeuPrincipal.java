@@ -36,8 +36,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
         menuUsuario.setVisible(false);
         
         //está desativado porque no momento não possui serventia
-        btnAlterarUsuario.setVisible(false);
-        btnExcluirUsuario.setVisible(false);
+        //btnExcluirUsuario.setVisible(false);
     }
 
     /**
@@ -56,13 +55,11 @@ public class MeuPrincipal extends javax.swing.JFrame {
         menuUsuario = new javax.swing.JMenu();
         btnCadastrarUsuario = new javax.swing.JMenuItem();
         btnConsultarUsuario = new javax.swing.JMenuItem();
-        btnAlterarUsuario = new javax.swing.JMenuItem();
         btnExcluirUsuario = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         btnCadastrarPatri = new javax.swing.JMenuItem();
         btnConsultarPatri = new javax.swing.JMenuItem();
-        btnAlterarPatri = new javax.swing.JMenuItem();
-        btnExcluirPatri = new javax.swing.JMenuItem();
+        btnBaixaPatri = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         btnPatriRelat = new javax.swing.JMenuItem();
         btnBaixaPatriRelat = new javax.swing.JMenuItem();
@@ -73,9 +70,19 @@ public class MeuPrincipal extends javax.swing.JFrame {
 
         btnCadastrarMenu.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnCadastrarMenu.setText("Cadastrar");
+        btnCadastrarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarMenuActionPerformed(evt);
+            }
+        });
 
         btnConsultarMenu.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnConsultarMenu.setText("Consultar");
+        btnConsultarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarMenuActionPerformed(evt);
+            }
+        });
 
         btnSairMenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSairMenu.setForeground(new java.awt.Color(255, 0, 0));
@@ -114,9 +121,6 @@ public class MeuPrincipal extends javax.swing.JFrame {
         });
         menuUsuario.add(btnConsultarUsuario);
 
-        btnAlterarUsuario.setText("Alterar");
-        menuUsuario.add(btnAlterarUsuario);
-
         btnExcluirUsuario.setText("Excluir");
         btnExcluirUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -130,16 +134,28 @@ public class MeuPrincipal extends javax.swing.JFrame {
         jMenu2.setText("Patrimônio");
 
         btnCadastrarPatri.setText("Cadastrar");
+        btnCadastrarPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarPatriActionPerformed(evt);
+            }
+        });
         jMenu2.add(btnCadastrarPatri);
 
         btnConsultarPatri.setText("Consultar");
+        btnConsultarPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarPatriActionPerformed(evt);
+            }
+        });
         jMenu2.add(btnConsultarPatri);
 
-        btnAlterarPatri.setText("Alterar");
-        jMenu2.add(btnAlterarPatri);
-
-        btnExcluirPatri.setText("Excluir");
-        jMenu2.add(btnExcluirPatri);
+        btnBaixaPatri.setText("Dar Baixa");
+        btnBaixaPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaixaPatriActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnBaixaPatri);
 
         jMenuBar1.add(jMenu2);
 
@@ -191,7 +207,9 @@ public class MeuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairMenuActionPerformed
 
     private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
-        // TODO add your handling code here:
+        ConsultarUser cvu = new ConsultarUser();
+        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cvu.setVisible(true);
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
     private void btnCadastrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioMouseClicked
@@ -217,10 +235,39 @@ public class MeuPrincipal extends javax.swing.JFrame {
         cvu.setVisible(true);
     }//GEN-LAST:event_btnConsultarUsuarioActionPerformed
 
+    private void btnCadastrarPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPatriActionPerformed
+        CadastrarPatri cd = new CadastrarPatri();
+        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cd.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarPatriActionPerformed
+
+    private void btnConsultarPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPatriActionPerformed
+        ConsultarPatri cd = new ConsultarPatri();
+        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cd.setVisible(true);
+    }//GEN-LAST:event_btnConsultarPatriActionPerformed
+
+    private void btnBaixaPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixaPatriActionPerformed
+        ConsultarPatri cd = new ConsultarPatri();
+        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cd.setVisible(true);
+    }//GEN-LAST:event_btnBaixaPatriActionPerformed
+
+    private void btnCadastrarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMenuActionPerformed
+        CadastrarPatri cd = new CadastrarPatri();
+        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cd.setVisible(true);
+    }//GEN-LAST:event_btnCadastrarMenuActionPerformed
+
+    private void btnConsultarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarMenuActionPerformed
+        ConsultarPatri cd = new ConsultarPatri();
+        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        cd.setVisible(true);
+    }//GEN-LAST:event_btnConsultarMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnAlterarPatri;
-    private javax.swing.JMenuItem btnAlterarUsuario;
+    private javax.swing.JMenuItem btnBaixaPatri;
     private javax.swing.JMenuItem btnBaixaPatriRelat;
     private javax.swing.JButton btnCadastrarMenu;
     private javax.swing.JMenuItem btnCadastrarPatri;
@@ -228,7 +275,6 @@ public class MeuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultarMenu;
     private javax.swing.JMenuItem btnConsultarPatri;
     private javax.swing.JMenuItem btnConsultarUsuario;
-    private javax.swing.JMenuItem btnExcluirPatri;
     private javax.swing.JMenuItem btnExcluirUsuario;
     private javax.swing.JMenuItem btnPatriRelat;
     private javax.swing.JButton btnSairMenu;

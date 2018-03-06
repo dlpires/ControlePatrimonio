@@ -5,19 +5,73 @@
  */
 package View;
 
+import bean.Patrimonio;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neto-PC
  */
 public class CadastrarPatri extends javax.swing.JFrame {
 
+    String action = "";
+    Patrimonio patrimonio = new Patrimonio();
+    
     /**
      * Creates new form Cadastrar
      */
     public CadastrarPatri() {
         initComponents();
+        setLocationRelativeTo(null);
+        
+        action = "cadastrar";
+        
+        txtCodCadPatri.setEnabled(true);
+        btnBaixaCadPatri.setVisible(false);
+        btnAlterarCadPatri.setVisible(false);
+        
+    }
+    
+    public CadastrarPatri(Patrimonio patrimonio) {
+        initComponents();
+        setLocationRelativeTo(null);
+
+        this.patrimonio = patrimonio;
+        inicializarCampos();
+
+        txtCodCadPatri.setEnabled(false);
+        btnOkCadPatri.setEnabled(false);
+        
+        action = "alterar";
     }
 
+    private void inicializarCampos() {
+        txtCodCadPatri.setText(Integer.toString(patrimonio.getCodPatrimonio()));
+        txtDescricaoCadPatri.setText(patrimonio.getDescricaoPatrimonio());
+        txtLocalCadPatri.setText(patrimonio.getLocalPatrimonio());
+        txtMarcaCadPatri.setText(patrimonio.getMarcaPatrimonio());
+        txtModalAquiCadPatri.setText(patrimonio.getModAquPatrimonio());
+        txtModeloCadPatri.setText(patrimonio.getModeloPatrimonio());
+        txtNProcCadPatri.setText(Integer.toString(patrimonio.getNumProcEntrada()));
+        txtNSerieCadPatri.setText(Integer.toString(patrimonio.getNumSeriePatrimonio()));
+        txtNfCadPatri.setText(Integer.toString(patrimonio.getNumNotaFiscal()));
+        txtNomeCadPatri.setText(patrimonio.getNomePatrimonio());
+        txtValorCadPatri.setText(Float.toString(patrimonio.getValorPatrimonio()));
+    }
+    
+    private void setPatrimonio(){
+        patrimonio.setCodPatrimonio(Integer.parseInt(txtCodCadPatri.getText()));
+        patrimonio.setDescricaoPatrimonio(txtDescricaoCadPatri.getText());
+        patrimonio.setLocalPatrimonio(txtLocalCadPatri.getText());
+        patrimonio.setMarcaPatrimonio(txtMarcaCadPatri.getText());
+        patrimonio.setModAquPatrimonio(txtModalAquiCadPatri.getText());
+        patrimonio.setModeloPatrimonio(txtModeloCadPatri.getText());
+        patrimonio.setNumProcEntrada(Integer.parseInt(txtNProcCadPatri.getText()));
+        patrimonio.setNumSeriePatrimonio(Integer.parseInt(txtNSerieCadPatri.getText()));
+        patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
+        patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
+        patrimonio.setValorPatrimonio(Float.parseFloat(txtValorCadPatri.getText()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,6 +107,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
         btnOkCadPatri = new javax.swing.JButton();
         btnLimparCadPatri = new javax.swing.JButton();
         btnCancelarCadPatri = new javax.swing.JButton();
+        btnAlterarCadPatri = new javax.swing.JButton();
+        btnBaixaCadPatri = new javax.swing.JButton();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -100,13 +156,46 @@ public class CadastrarPatri extends javax.swing.JFrame {
         btnOkCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnOkCadPatri.setForeground(new java.awt.Color(0, 102, 255));
         btnOkCadPatri.setText("OK");
+        btnOkCadPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOkCadPatriActionPerformed(evt);
+            }
+        });
 
         btnLimparCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparCadPatri.setText("Limpar");
+        btnLimparCadPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparCadPatriActionPerformed(evt);
+            }
+        });
 
         btnCancelarCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancelarCadPatri.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelarCadPatri.setText("Cancelar");
+        btnCancelarCadPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarCadPatriActionPerformed(evt);
+            }
+        });
+
+        btnAlterarCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnAlterarCadPatri.setForeground(new java.awt.Color(0, 102, 255));
+        btnAlterarCadPatri.setText("Editar");
+        btnAlterarCadPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarCadPatriActionPerformed(evt);
+            }
+        });
+
+        btnBaixaCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btnBaixaCadPatri.setForeground(new java.awt.Color(0, 102, 255));
+        btnBaixaCadPatri.setText("Dar Baixa");
+        btnBaixaCadPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaixaCadPatriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,25 +222,6 @@ public class CadastrarPatri extends javax.swing.JFrame {
                     .addComponent(txtDescricaoCadPatri)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtModalAquiCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLocalCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnOkCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnLimparCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnCancelarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +236,32 @@ public class CadastrarPatri extends javax.swing.JFrame {
                                         .addComponent(jLabel7)
                                         .addComponent(txtMarcaCadPatri, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                                         .addComponent(txtNSerieCadPatri)))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnBaixaCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(btnAlterarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtModalAquiCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtLocalCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel11)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnOkCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnLimparCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnCancelarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -220,15 +315,85 @@ public class CadastrarPatri extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnOkCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimparCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancelarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                    .addComponent(btnCancelarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBaixaCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAlterarCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnBaixaCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixaCadPatriActionPerformed
+        int escolha = JOptionPane.showConfirmDialog(null, "Deseja realmente dar baixa?", "Confirmar Baixa de Patrimônio", JOptionPane.YES_NO_OPTION);
+        if (escolha == JOptionPane.YES_OPTION) {
+            setPatrimonio();
+            patrimonio.setBaixaPatrimonio(true);
+        }
+    }//GEN-LAST:event_btnBaixaCadPatriActionPerformed
+
+    private void btnAlterarCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarCadPatriActionPerformed
+        btnAlterarCadPatri.setEnabled(false);
+        btnBaixaCadPatri.setEnabled(false);
+        btnOkCadPatri.setEnabled(true);
+    }//GEN-LAST:event_btnAlterarCadPatriActionPerformed
+
+    private void btnOkCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadPatriActionPerformed
+        patrimonio.setBaixaPatrimonio(false);
+        setPatrimonio();
+        
+        switch (action) {
+            case "alterar":
+                patrimonio.Alterar();
+                btnAlterarCadPatri.setEnabled(true);
+                btnBaixaCadPatri.setEnabled(true);
+                btnOkCadPatri.setEnabled(false);
+                JOptionPane.showMessageDialog(null, "Patrimônio alterado com sucesso!");
+                break;
+            case "cadastrar":
+                patrimonio.Cadastrar();
+                this.dispose();
+                JOptionPane.showMessageDialog(null, "Patrimônio cadastrado com sucesso!");
+                break;
+            default:
+                this.dispose();
+                break;
+        }
+    }//GEN-LAST:event_btnOkCadPatriActionPerformed
+
+    private void btnLimparCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCadPatriActionPerformed
+        if (action.equals("alterar")) {
+            inicializarCampos();
+        } else {
+            txtCodCadPatri.setText("");
+            txtDescricaoCadPatri.setText("");
+            txtLocalCadPatri.setText("");
+            txtMarcaCadPatri.setText("");
+            txtModalAquiCadPatri.setText("");
+            txtModeloCadPatri.setText("");
+            txtNProcCadPatri.setText("");
+            txtNSerieCadPatri.setText("");
+            txtNfCadPatri.setText("");
+            txtNomeCadPatri.setText("");
+            txtValorCadPatri.setText("");
+        }
+    }//GEN-LAST:event_btnLimparCadPatriActionPerformed
+
+    private void btnCancelarCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadPatriActionPerformed
+        if (action.equals("alterar")) {
+            btnAlterarCadPatri.setEnabled(true);
+            btnBaixaCadPatri.setEnabled(true);
+            btnOkCadPatri.setEnabled(false);
+            inicializarCampos();
+        } else {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnCancelarCadPatriActionPerformed
+
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterarCadPatri;
+    private javax.swing.JButton btnBaixaCadPatri;
     private javax.swing.JButton btnCancelarCadPatri;
     private javax.swing.JButton btnLimparCadPatri;
     private javax.swing.JButton btnOkCadPatri;
@@ -256,4 +421,5 @@ public class CadastrarPatri extends javax.swing.JFrame {
     private javax.swing.JTextField txtNomeCadPatri;
     private javax.swing.JTextField txtValorCadPatri;
     // End of variables declaration//GEN-END:variables
+
 }
