@@ -76,7 +76,7 @@ public class CadastrarUser extends javax.swing.JFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                                             Cadastrar Patrimônio");
+        setTitle("Cadastrar Usuário");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nome:");
@@ -145,7 +145,7 @@ public class CadastrarUser extends javax.swing.JFrame {
 
         btnAlterarUsuario.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAlterarUsuario.setForeground(new java.awt.Color(0, 102, 255));
-        btnAlterarUsuario.setText("Editar");
+        btnAlterarUsuario.setText("Alterar");
         btnAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarUsuarioActionPerformed(evt);

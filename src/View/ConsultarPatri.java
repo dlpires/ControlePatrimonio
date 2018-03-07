@@ -5,17 +5,33 @@
  */
 package View;
 
+import bean.Patrimonio;
+import dao.PatrimonioDAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Neto-PC
  */
 public class ConsultarPatri extends javax.swing.JFrame {
 
+    Patrimonio patrimonio = new Patrimonio();
     /**
      * Creates new form Consultar
      */
     public ConsultarPatri() {
         initComponents();
+    }
+    
+    private boolean validateForm(){
+        if (txtCodConsPatri.getText().equals("") &&
+            txtNProcConsPatri.getText().equals("") &&
+            txtNomeConsPatri.getText().equals("")){
+            
+            return false;
+        }
+        
+        return true;
     }
 
     /**
@@ -30,7 +46,7 @@ public class ConsultarPatri extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtCodConsPatri = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        cadNProcConsPatri = new javax.swing.JTextField();
+        txtNProcConsPatri = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtNomeConsPatri = new javax.swing.JTextField();
         btnBuscarConsPatri = new javax.swing.JButton();
@@ -38,7 +54,7 @@ public class ConsultarPatri extends javax.swing.JFrame {
         btnCancelarConsPatri = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                               Consultar");
+        setTitle("Consultar");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Código:");
@@ -52,13 +68,28 @@ public class ConsultarPatri extends javax.swing.JFrame {
         btnBuscarConsPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnBuscarConsPatri.setForeground(new java.awt.Color(0, 102, 255));
         btnBuscarConsPatri.setText("Buscar");
+        btnBuscarConsPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarConsPatriActionPerformed(evt);
+            }
+        });
 
         btnLimparConsPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnLimparConsPatri.setText("Limpar");
+        btnLimparConsPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparConsPatriActionPerformed(evt);
+            }
+        });
 
         btnCancelarConsPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnCancelarConsPatri.setForeground(new java.awt.Color(255, 0, 0));
         btnCancelarConsPatri.setText("Cancelar");
+        btnCancelarConsPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarConsPatriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +112,7 @@ public class ConsultarPatri extends javax.swing.JFrame {
                                 .addComponent(txtCodConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(37, 37, 37)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cadNProcConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNProcConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2)))
                         .addComponent(txtNomeConsPatri)))
                 .addContainerGap(20, Short.MAX_VALUE))
@@ -96,7 +127,7 @@ public class ConsultarPatri extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCodConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cadNProcConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNProcConsPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -112,16 +143,52 @@ public class ConsultarPatri extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLimparConsPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparConsPatriActionPerformed
+        txtCodConsPatri.setText("");
+        txtNProcConsPatri.setText("");
+        txtNomeConsPatri.setText("");
+    }//GEN-LAST:event_btnLimparConsPatriActionPerformed
+
+    private void btnCancelarConsPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarConsPatriActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarConsPatriActionPerformed
+
+    private void btnBuscarConsPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsPatriActionPerformed
+        if(!validateForm()){
+            JOptionPane.showMessageDialog(null, "Preencha um dos campos!");
+            return;
+        }
+        
+        if(!txtCodConsPatri.getText().isEmpty()){
+            patrimonio.setCodPatrimonio(Integer.parseInt(txtCodConsPatri.getText()));
+        }
+        
+        if(!txtNProcConsPatri.getText().isEmpty()){
+            patrimonio.setNumProcEntrada(Integer.parseInt(txtNProcConsPatri.getText()));
+        }
+
+        patrimonio.setNomePatrimonio(txtNomeConsPatri.getText());
+        
+        patrimonio.Consultar();
+        
+        if(!patrimonio.isBaixaPatrimonio()){
+            new CadastrarPatri(PatrimonioDAO.load(patrimonio)).setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Patrimônio não encontrado!");
+        }
+    }//GEN-LAST:event_btnBuscarConsPatriActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarConsPatri;
     private javax.swing.JButton btnCancelarConsPatri;
     private javax.swing.JButton btnLimparConsPatri;
-    private javax.swing.JTextField cadNProcConsPatri;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txtCodConsPatri;
+    private javax.swing.JTextField txtNProcConsPatri;
     private javax.swing.JTextField txtNomeConsPatri;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,7 +34,7 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         tabRelatBaixaPatri = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                                                                                             Relatório  Baixa Patrimonial ");
+        setTitle("Relatório Baixa Patrimonial ");
 
         jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 0, 0));

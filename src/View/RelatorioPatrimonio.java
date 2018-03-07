@@ -34,7 +34,7 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                                                                                                  Relatório Patrimônio");
+        setTitle("Relatório Patrimônio");
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("RELATÓRIO DE PATRIMÔNIO");

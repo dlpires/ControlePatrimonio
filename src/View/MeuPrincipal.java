@@ -65,7 +65,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
         btnBaixaPatriRelat = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                                    Sistema Patrimônio");
+        setTitle("Sistema Patrimônio");
         setSize(new java.awt.Dimension(615, 0));
 
         btnCadastrarMenu.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -162,9 +162,19 @@ public class MeuPrincipal extends javax.swing.JFrame {
         jMenu3.setText("Relatórios");
 
         btnPatriRelat.setText("Patrimônio");
+        btnPatriRelat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPatriRelatActionPerformed(evt);
+            }
+        });
         jMenu3.add(btnPatriRelat);
 
         btnBaixaPatriRelat.setText("Baixa Patrimonial");
+        btnBaixaPatriRelat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBaixaPatriRelatActionPerformed(evt);
+            }
+        });
         jMenu3.add(btnBaixaPatriRelat);
 
         jMenuBar1.add(jMenu3);
@@ -264,6 +274,18 @@ public class MeuPrincipal extends javax.swing.JFrame {
         cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
         cd.setVisible(true);
     }//GEN-LAST:event_btnConsultarMenuActionPerformed
+
+    private void btnPatriRelatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatriRelatActionPerformed
+        RelatorioPatrimonio rp = new RelatorioPatrimonio();
+        rp.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        rp.setVisible(true);
+    }//GEN-LAST:event_btnPatriRelatActionPerformed
+
+    private void btnBaixaPatriRelatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixaPatriRelatActionPerformed
+        BaixaPatrimonial rp = new BaixaPatrimonial();
+        rp.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
+        rp.setVisible(true);
+    }//GEN-LAST:event_btnBaixaPatriRelatActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

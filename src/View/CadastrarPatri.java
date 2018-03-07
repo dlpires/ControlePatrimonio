@@ -26,7 +26,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         
         action = "cadastrar";
         
-        txtCodCadPatri.setEnabled(true);
+        txtCodCadPatri.setEnabled(false);
         btnBaixaCadPatri.setVisible(false);
         btnAlterarCadPatri.setVisible(false);
         
@@ -60,7 +60,6 @@ public class CadastrarPatri extends javax.swing.JFrame {
     }
     
     private void setPatrimonio(){
-        patrimonio.setCodPatrimonio(Integer.parseInt(txtCodCadPatri.getText()));
         patrimonio.setDescricaoPatrimonio(txtDescricaoCadPatri.getText());
         patrimonio.setLocalPatrimonio(txtLocalCadPatri.getText());
         patrimonio.setMarcaPatrimonio(txtMarcaCadPatri.getText());
@@ -71,6 +70,23 @@ public class CadastrarPatri extends javax.swing.JFrame {
         patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
         patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
         patrimonio.setValorPatrimonio(Float.parseFloat(txtValorCadPatri.getText()));
+    }
+    
+    private boolean validateForm(){
+        if (txtDescricaoCadPatri.getText().equals("") ||
+            txtMarcaCadPatri.getText().equals("") ||
+            txtModalAquiCadPatri.getText().equals("") ||
+            txtModeloCadPatri.getText().equals("") ||
+            txtNProcCadPatri.getText().equals("") ||
+            txtNSerieCadPatri.getText().equals("") ||
+            txtNfCadPatri.getText().equals("") ||
+            txtNomeCadPatri.getText().equals("") ||
+            txtValorCadPatri.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return false;
+        }
+        
+        return true;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -113,7 +129,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                                             Cadastrar Patrimônio");
+        setTitle("Cadastrar Patrimônio");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Código:");
@@ -151,6 +167,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
         txtCodCadPatri.setBackground(new java.awt.Color(204, 204, 204));
         txtCodCadPatri.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        txtNProcCadPatri.setToolTipText("");
+
         txtModeloCadPatri.setToolTipText("");
 
         btnOkCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -181,7 +199,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
 
         btnAlterarCadPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnAlterarCadPatri.setForeground(new java.awt.Color(0, 102, 255));
-        btnAlterarCadPatri.setText("Editar");
+        btnAlterarCadPatri.setText("Alterar");
         btnAlterarCadPatri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlterarCadPatriActionPerformed(evt);
@@ -329,6 +347,11 @@ public class CadastrarPatri extends javax.swing.JFrame {
         if (escolha == JOptionPane.YES_OPTION) {
             setPatrimonio();
             patrimonio.setBaixaPatrimonio(true);
+            patrimonio.Alterar();
+            JOptionPane.showMessageDialog(null, "Baixa Patrimonial realizada com sucesso!");
+        }
+        else if (escolha == JOptionPane.NO_OPTION){
+            JOptionPane.showMessageDialog(null, "Baixa Patrimonial não realizada!");
         }
     }//GEN-LAST:event_btnBaixaCadPatriActionPerformed
 
@@ -339,6 +362,11 @@ public class CadastrarPatri extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarCadPatriActionPerformed
 
     private void btnOkCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadPatriActionPerformed
+        
+        if(!validateForm()){
+            return;
+        }
+        
         patrimonio.setBaixaPatrimonio(false);
         setPatrimonio();
         

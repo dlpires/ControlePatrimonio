@@ -24,17 +24,43 @@ public class PatrimonioDAO {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
-            stmt = con.prepareStatement("SELECT * FROM patrimonio WHERE cod_patrimonio = ?");
+            stmt = con.prepareStatement("SELECT * FROM patrimonio WHERE cod_patrimonio = ? OR num_proc_entrada = ? OR nome_patrimonio = ?");
             stmt.setInt(1, patrimonio.getCodPatrimonio());
+            stmt.setInt(2, patrimonio.getNumProcEntrada());
+            stmt.setString(3, patrimonio.getNomePatrimonio());
             rs = stmt.executeQuery();
             rs.next();
             return PatrimonioDAO.createInstance(rs);
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+            return null;
         } finally {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
-        return patrimonio;
+    }
+    
+    public static boolean exists(Patrimonio patrimonio) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        boolean valid = false;
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM patrimonio WHERE cod_patrimonio = ? OR num_proc_entrada = ? OR nome_patrimonio = ?");
+            stmt.setInt(1, patrimonio.getCodPatrimonio());
+            stmt.setInt(2, patrimonio.getNumProcEntrada());
+            stmt.setString(3, patrimonio.getNomePatrimonio());
+            rs = stmt.executeQuery();
+            rs.next();
+            while(rs.next()) valid = true;
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        
+        return valid;
     }
 
     public static ArrayList<Patrimonio> readAll() {
@@ -60,18 +86,19 @@ public class PatrimonioDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("UPDATE patrimonio SET  num_proc_entrada = ?, num_nota_fiscal = ?, nome_patrimonio = ?, marca_patrimonio = ?, modelo_patrimonio = ?, num_serie_patrimonio = ?, valor_patrimonio = ?, mod_aqu_patrimonio = ?, local_patrimonio = ?, baixa_patrimonio = ? WHERE cod_patrimonio= ?");
+            stmt = con.prepareStatement("UPDATE patrimonio SET  num_proc_entrada = ?, num_nota_fiscal = ?, nome_patrimonio = ?, marca_patrimonio = ?, modelo_patrimonio = ?, descricao_patrimonio = ?, num_serie_patrimonio = ?, valor_patrimonio = ?, mod_aqu_patrimonio = ?, local_patrimonio = ?, baixa_patrimonio = ? WHERE cod_patrimonio= ?");
             stmt.setInt(1, patrimonio.getNumProcEntrada());
             stmt.setInt(2, patrimonio.getNumNotaFiscal());
             stmt.setString(3, patrimonio.getNomePatrimonio());
             stmt.setString(4, patrimonio.getMarcaPatrimonio());
             stmt.setString(5, patrimonio.getModeloPatrimonio());
-            stmt.setInt(6, patrimonio.getNumSeriePatrimonio());
-            stmt.setFloat(7, patrimonio.getValorPatrimonio());
-            stmt.setString(8, patrimonio.getModAquPatrimonio());
-            stmt.setString(9, patrimonio.getLocalPatrimonio());
-            stmt.setBoolean(10, patrimonio.isBaixaPatrimonio());
-            stmt.setInt(11, patrimonio.getCodPatrimonio());
+            stmt.setString(6, patrimonio.getDescricaoPatrimonio());
+            stmt.setInt(7, patrimonio.getNumSeriePatrimonio());
+            stmt.setFloat(8, patrimonio.getValorPatrimonio());
+            stmt.setString(9, patrimonio.getModAquPatrimonio());
+            stmt.setString(10, patrimonio.getLocalPatrimonio());
+            stmt.setBoolean(11, patrimonio.isBaixaPatrimonio());
+            stmt.setInt(12, patrimonio.getCodPatrimonio());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de Atualização: " + ex.getMessage());
@@ -84,17 +111,18 @@ public class PatrimonioDAO {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO patrimonio (num_proc_entrada,num_nota_fiscal,nome_patrimonio,marca_patrimonio,modelo_patrimonio,num_serie_patrimonio,valor_patrimonio,mod_aqu_patrimonio,local_patrimonio,baixa_patrimonio) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            stmt = con.prepareStatement("INSERT INTO patrimonio (num_proc_entrada,num_nota_fiscal,nome_patrimonio,marca_patrimonio,modelo_patrimonio,descricao_patrimonio,num_serie_patrimonio,valor_patrimonio,mod_aqu_patrimonio,local_patrimonio,baixa_patrimonio) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
             stmt.setInt(1, patrimonio.getNumProcEntrada());
             stmt.setInt(2, patrimonio.getNumNotaFiscal());
             stmt.setString(3, patrimonio.getNomePatrimonio());
             stmt.setString(4, patrimonio.getMarcaPatrimonio());
             stmt.setString(5, patrimonio.getModeloPatrimonio());
-            stmt.setInt(6, patrimonio.getNumSeriePatrimonio());
-            stmt.setFloat(7, patrimonio.getValorPatrimonio());
-            stmt.setString(8, patrimonio.getModAquPatrimonio());
-            stmt.setString(9, patrimonio.getLocalPatrimonio());
-            stmt.setBoolean(10, patrimonio.isBaixaPatrimonio());
+            stmt.setString(6, patrimonio.getDescricaoPatrimonio());
+            stmt.setInt(7, patrimonio.getNumSeriePatrimonio());
+            stmt.setFloat(8, patrimonio.getValorPatrimonio());
+            stmt.setString(9, patrimonio.getModAquPatrimonio());
+            stmt.setString(10, patrimonio.getLocalPatrimonio());
+            stmt.setBoolean(11, patrimonio.isBaixaPatrimonio());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
         } catch (SQLException ex) {
@@ -122,11 +150,13 @@ public class PatrimonioDAO {
         Patrimonio patrimonio = new Patrimonio();
 
         try {
+            patrimonio.setCodPatrimonio(result.getInt("cod_patrimonio"));
             patrimonio.setNumProcEntrada(result.getInt("num_proc_entrada"));
             patrimonio.setNumNotaFiscal(result.getInt("num_nota_fiscal"));
             patrimonio.setNomePatrimonio(result.getString("nome_patrimonio"));
             patrimonio.setMarcaPatrimonio(result.getString("marca_patrimonio"));
             patrimonio.setModeloPatrimonio(result.getString("modelo_patrimonio"));
+            patrimonio.setDescricaoPatrimonio(result.getString("descricao_patrimonio"));
             patrimonio.setNumSeriePatrimonio(result.getInt("num_serie_patrimonio"));
             patrimonio.setValorPatrimonio(result.getFloat("valor_patrimonio"));
             patrimonio.setModAquPatrimonio(result.getString("mod_aqu_patrimonio"));
@@ -134,6 +164,7 @@ public class PatrimonioDAO {
             patrimonio.setBaixaPatrimonio(result.getBoolean("baixa_patrimonio"));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao criar instância de Patrimônio: " + ex.getMessage());
+            patrimonio = null;
         }
 
         return patrimonio;

@@ -45,7 +45,7 @@ public class ConsultarUser extends javax.swing.JFrame {
         btnCancelarConsUser = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("                                                               Consultar");
+        setTitle("Consultar");
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Login:");

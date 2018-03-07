@@ -32,6 +32,7 @@ CREATE TABLE `patrimonio` (
   `num_nota_fiscal` int(11) NOT NULL,
   `nome_patrimonio` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `marca_patrimonio` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `descricao_patrimonio` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `modelo_patrimonio` varchar(30) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `num_serie_patrimonio` int(11) NOT NULL,
   `valor_patrimonio` float NOT NULL,
