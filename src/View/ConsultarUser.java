@@ -20,6 +20,7 @@ public class ConsultarUser extends javax.swing.JFrame {
     public ConsultarUser() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
         
         //está desativado porque no momento não possui serventia

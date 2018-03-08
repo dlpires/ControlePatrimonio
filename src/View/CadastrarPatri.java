@@ -6,7 +6,10 @@
 package View;
 
 import bean.Patrimonio;
+import java.text.DecimalFormat;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -23,6 +26,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
     public CadastrarPatri() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         
         action = "cadastrar";
         
@@ -35,6 +39,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
     public CadastrarPatri(Patrimonio patrimonio) {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         this.patrimonio = patrimonio;
         inicializarCampos();
@@ -69,7 +74,10 @@ public class CadastrarPatri extends javax.swing.JFrame {
         patrimonio.setNumSeriePatrimonio(Integer.parseInt(txtNSerieCadPatri.getText()));
         patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
         patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
-        patrimonio.setValorPatrimonio(Float.parseFloat(txtValorCadPatri.getText()));
+        
+        DecimalFormat df = new DecimalFormat("0.00");
+        
+        patrimonio.setValorPatrimonio(Float.parseFloat(df.format(txtValorCadPatri.getValue().floatValue())));
     }
     
     private boolean validateForm(){
@@ -86,6 +94,21 @@ public class CadastrarPatri extends javax.swing.JFrame {
             return false;
         }
         
+        if(!txtNProcCadPatri.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Campo "+ lblNProcCadPatri.getText() +" com dados inválidos!");
+            return false;
+        }
+        
+        if(!txtNSerieCadPatri.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Campo "+ lblNSerieCadPatri.getText() +" com dados inválidos!");
+            return false;
+        }
+        
+        if(!txtNfCadPatri.getText().matches("[0-9]+")){
+            JOptionPane.showMessageDialog(null, "Campo "+ lblNfCadPatri.getText() +" com dados inválidos!");
+            return false;
+        }
+        
         return true;
     }
     /**
@@ -99,14 +122,14 @@ public class CadastrarPatri extends javax.swing.JFrame {
 
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNProcCadPatri = new javax.swing.JLabel();
+        lblNfCadPatri = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblNSerieCadPatri = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblValorCadPatri = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtCodCadPatri = new javax.swing.JTextField();
@@ -119,12 +142,12 @@ public class CadastrarPatri extends javax.swing.JFrame {
         txtNSerieCadPatri = new javax.swing.JTextField();
         txtLocalCadPatri = new javax.swing.JTextField();
         txtModalAquiCadPatri = new javax.swing.JTextField();
-        txtValorCadPatri = new javax.swing.JTextField();
         btnOkCadPatri = new javax.swing.JButton();
         btnLimparCadPatri = new javax.swing.JButton();
         btnCancelarCadPatri = new javax.swing.JButton();
         btnAlterarCadPatri = new javax.swing.JButton();
         btnBaixaCadPatri = new javax.swing.JButton();
+        txtValorCadPatri = new JNumberField.JNumberField();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -134,11 +157,11 @@ public class CadastrarPatri extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setText("Código:");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setText("Nº Processo de Entrada:");
+        lblNProcCadPatri.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblNProcCadPatri.setText("Nº Processo de Entrada:");
 
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setText("Nº Nota Fiscal:");
+        lblNfCadPatri.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblNfCadPatri.setText("Nº Nota Fiscal:");
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setText("Nome:");
@@ -149,14 +172,14 @@ public class CadastrarPatri extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel6.setText("Modelo:");
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel7.setText("Nº Série:");
+        lblNSerieCadPatri.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblNSerieCadPatri.setText("Nº Série:");
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setText("Descrição:");
 
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel9.setText("Valor:");
+        lblValorCadPatri.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        lblValorCadPatri.setText("Valor:");
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Modalidade Aquisição:");
@@ -164,7 +187,6 @@ public class CadastrarPatri extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel11.setText("Local:");
 
-        txtCodCadPatri.setBackground(new java.awt.Color(204, 204, 204));
         txtCodCadPatri.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         txtNProcCadPatri.setToolTipText("");
@@ -215,6 +237,9 @@ public class CadastrarPatri extends javax.swing.JFrame {
             }
         });
 
+        txtValorCadPatri.setText("");
+        txtValorCadPatri.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -231,12 +256,12 @@ public class CadastrarPatri extends javax.swing.JFrame {
                                     .addComponent(txtCodCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(lblNProcCadPatri)
                                     .addComponent(txtNProcCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNfCadPatri, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)))
+                            .addComponent(lblNfCadPatri)
+                            .addComponent(txtNfCadPatri)))
                     .addComponent(txtDescricaoCadPatri)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +276,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel7)
+                                        .addComponent(lblNSerieCadPatri)
                                         .addComponent(txtMarcaCadPatri, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                                         .addComponent(txtNSerieCadPatri)))))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -268,9 +293,9 @@ public class CadastrarPatri extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(lblValorCadPatri)
+                                    .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtLocalCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11)))
@@ -295,8 +320,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
                             .addComponent(txtNProcCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNfCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(jLabel2)))
+                        .addComponent(lblNfCadPatri)
+                        .addComponent(lblNProcCadPatri)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -308,7 +333,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(lblNSerieCadPatri))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtModeloCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +348,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                            .addComponent(lblValorCadPatri))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtModalAquiCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -408,14 +433,15 @@ public class CadastrarPatri extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparCadPatriActionPerformed
 
     private void btnCancelarCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadPatriActionPerformed
-        if (action.equals("alterar")) {
+        /*if (action.equals("alterar")) {
             btnAlterarCadPatri.setEnabled(true);
             btnBaixaCadPatri.setEnabled(true);
             btnOkCadPatri.setEnabled(false);
             inicializarCampos();
         } else {
             this.dispose();
-        }
+        }*/
+        this.dispose();
     }//GEN-LAST:event_btnCancelarCadPatriActionPerformed
 
    
@@ -428,15 +454,15 @@ public class CadastrarPatri extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel lblNProcCadPatri;
+    private javax.swing.JLabel lblNSerieCadPatri;
+    private javax.swing.JLabel lblNfCadPatri;
+    private javax.swing.JLabel lblValorCadPatri;
     private javax.swing.JTextField txtCodCadPatri;
     private javax.swing.JTextField txtDescricaoCadPatri;
     private javax.swing.JTextField txtLocalCadPatri;
@@ -447,7 +473,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
     private javax.swing.JTextField txtNSerieCadPatri;
     private javax.swing.JTextField txtNfCadPatri;
     private javax.swing.JTextField txtNomeCadPatri;
-    private javax.swing.JTextField txtValorCadPatri;
+    private JNumberField.JNumberField txtValorCadPatri;
     // End of variables declaration//GEN-END:variables
 
 }

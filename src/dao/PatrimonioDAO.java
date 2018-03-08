@@ -124,7 +124,6 @@ public class PatrimonioDAO {
             stmt.setString(10, patrimonio.getLocalPatrimonio());
             stmt.setBoolean(11, patrimonio.isBaixaPatrimonio());
             stmt.executeUpdate();
-            ResultSet rs = stmt.getGeneratedKeys();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de Gravação: " + ex.getMessage());
         } finally {
@@ -164,7 +163,6 @@ public class PatrimonioDAO {
             patrimonio.setBaixaPatrimonio(result.getBoolean("baixa_patrimonio"));
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Falha ao criar instância de Patrimônio: " + ex.getMessage());
-            patrimonio = null;
         }
 
         return patrimonio;

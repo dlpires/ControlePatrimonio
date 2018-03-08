@@ -33,6 +33,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
     private void initialize(){
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         menuUsuario.setVisible(false);
         
         //está desativado porque no momento não possui serventia

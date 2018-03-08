@@ -7,6 +7,7 @@ package bean;
 
 import java.util.ArrayList;
 import dao.PatrimonioDAO;
+import java.math.BigDecimal;
 
 /**
  *

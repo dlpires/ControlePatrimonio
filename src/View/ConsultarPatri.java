@@ -21,6 +21,8 @@ public class ConsultarPatri extends javax.swing.JFrame {
      */
     public ConsultarPatri() {
         initComponents();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
     }
     
     private boolean validateForm(){
@@ -169,9 +171,7 @@ public class ConsultarPatri extends javax.swing.JFrame {
 
         patrimonio.setNomePatrimonio(txtNomeConsPatri.getText());
         
-        patrimonio.Consultar();
-        
-        if(!patrimonio.isBaixaPatrimonio()){
+        if(PatrimonioDAO.exists(patrimonio)){
             new CadastrarPatri(PatrimonioDAO.load(patrimonio)).setVisible(true);
             this.dispose();
         }else{

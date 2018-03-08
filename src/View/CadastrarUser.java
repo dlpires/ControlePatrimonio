@@ -6,7 +6,9 @@
 package View;
 
 import bean.Usuario;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /**
  *
@@ -23,6 +25,7 @@ public class CadastrarUser extends javax.swing.JFrame {
     public CadastrarUser() {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 
         action = "cadastrar";
 
@@ -43,6 +46,19 @@ public class CadastrarUser extends javax.swing.JFrame {
         action = "alterar";
     }
 
+    private boolean validateForm(){
+        if (txtSenhaCadUser.getText().equals("") ||
+            txtConfSenhaCadUser.getText().equals("") ||
+            txtNomeCadUser.getText().equals("") ||
+            txtFuncaoCadUser.getText().equals("") ||
+            txtCelCadUser.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
+            return false;
+        }
+        
+        return true;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,8 +79,6 @@ public class CadastrarUser extends javax.swing.JFrame {
         txtNomeCadUser = new javax.swing.JTextField();
         txtLoginCadUser = new javax.swing.JTextField();
         txtFuncaoCadUser = new javax.swing.JTextField();
-        txtSenhaCadUser = new javax.swing.JTextField();
-        txtConfSenhaCadUser = new javax.swing.JTextField();
         txtCelCadUser = new javax.swing.JTextField();
         btnOkCadUser = new javax.swing.JButton();
         btnLimparCadUser = new javax.swing.JButton();
@@ -72,6 +86,8 @@ public class CadastrarUser extends javax.swing.JFrame {
         cbNivelAcessoCadUser = new javax.swing.JComboBox<>();
         btnExcluirUsuario = new javax.swing.JButton();
         btnAlterarUsuario = new javax.swing.JButton();
+        txtSenhaCadUser = new javax.swing.JPasswordField();
+        txtConfSenhaCadUser = new javax.swing.JPasswordField();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -99,7 +115,13 @@ public class CadastrarUser extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel10.setText("Celular:");
 
-        txtSenhaCadUser.setToolTipText("");
+        try{
+            MaskFormatter mask = new MaskFormatter("(##)#####-####");
+            txtCelCadUser = new JFormattedTextField(mask);
+        }
+        catch(Exception e){
+
+        }
 
         btnOkCadUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnOkCadUser.setForeground(new java.awt.Color(0, 102, 255));
@@ -163,21 +185,20 @@ public class CadastrarUser extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtSenhaCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                                        .addComponent(txtNomeCadUser)
-                                        .addComponent(jLabel6)
-                                        .addComponent(txtFuncaoCadUser))
-                                    .addComponent(jLabel8))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNomeCadUser)
+                                    .addComponent(jLabel6)
+                                    .addComponent(txtFuncaoCadUser)
+                                    .addComponent(jLabel8)
+                                    .addComponent(txtSenhaCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel7)
                                     .addComponent(txtLoginCadUser, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                                    .addComponent(txtConfSenhaCadUser)
-                                    .addComponent(txtCelCadUser))))
+                                    .addComponent(txtCelCadUser)
+                                    .addComponent(txtConfSenhaCadUser))))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 12, Short.MAX_VALUE)
@@ -218,7 +239,7 @@ public class CadastrarUser extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSenhaCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtConfSenhaCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10))
@@ -237,26 +258,32 @@ public class CadastrarUser extends javax.swing.JFrame {
                     .addComponent(btnCancelarCadUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExcluirUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAlterarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarCadUserActionPerformed
-        if (action.equals("alterar")) {
+        /*if (action.equals("alterar")) {
             btnAlterarUsuario.setEnabled(true);
             btnExcluirUsuario.setEnabled(true);
             btnOkCadUser.setEnabled(false);
             inicializarCampos();
         } else {
             this.dispose();
-        }
+        }*/
+        
+        this.dispose();
 
     }//GEN-LAST:event_btnCancelarCadUserActionPerformed
 
     private void btnOkCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadUserActionPerformed
 
+        if(!validateForm()){
+            return;
+        }
+        
         user.setSenhaUsuario(txtSenhaCadUser.getText());
         user.setConfSenhaUsuario(txtConfSenhaCadUser.getText());
         user.setNomeUsuario(txtNomeCadUser.getText());
@@ -344,10 +371,10 @@ public class CadastrarUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JTextField txtCelCadUser;
-    private javax.swing.JTextField txtConfSenhaCadUser;
+    private javax.swing.JPasswordField txtConfSenhaCadUser;
     private javax.swing.JTextField txtFuncaoCadUser;
     private javax.swing.JTextField txtLoginCadUser;
     private javax.swing.JTextField txtNomeCadUser;
-    private javax.swing.JTextField txtSenhaCadUser;
+    private javax.swing.JPasswordField txtSenhaCadUser;
     // End of variables declaration//GEN-END:variables
 }

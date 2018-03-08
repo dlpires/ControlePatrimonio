@@ -38,14 +38,12 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtSenhaCadUser" alignment="0" pref="393" max="32767" attributes="0"/>
-                                      <Component id="txtNomeCadUser" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtFuncaoCadUser" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtNomeCadUser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtFuncaoCadUser" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSenhaCadUser" alignment="0" pref="393" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -53,8 +51,8 @@
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtLoginCadUser" pref="297" max="32767" attributes="0"/>
-                                  <Component id="txtConfSenhaCadUser" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtCelCadUser" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtConfSenhaCadUser" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -111,7 +109,7 @@
                   <Component id="txtSenhaCadUser" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtConfSenhaCadUser" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -133,7 +131,7 @@
                   <Component id="btnExcluirUsuario" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="btnAlterarUsuario" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,14 +199,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtFuncaoCadUser">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtSenhaCadUser">
-      <Properties>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtConfSenhaCadUser">
-    </Component>
     <Component class="javax.swing.JTextField" name="txtCelCadUser">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="try{&#xd;&#xa;    MaskFormatter mask = new MaskFormatter(&quot;(##)#####-####&quot;);&#xd;&#xa;    txtCelCadUser = new JFormattedTextField(mask);&#xd;&#xa;}&#xd;&#xa;catch(Exception e){&#xd;&#xa;&#xd;&#xa;}"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnOkCadUser">
       <Properties>
@@ -292,6 +286,10 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAlterarUsuarioActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtSenhaCadUser">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="txtConfSenhaCadUser">
     </Component>
   </SubComponents>
 </Form>
