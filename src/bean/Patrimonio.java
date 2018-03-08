@@ -25,8 +25,8 @@ public class Patrimonio {
     private String ModeloPatrimonio;
     private int NumSeriePatrimonio;
     private String DescricaoPatrimonio;
-    private float ValorPatrimonio;
     private String ModAquPatrimonio;
+    private float ValorPatrimonio;
     private String LocalPatrimonio;
     private boolean BaixaPatrimonio;
 

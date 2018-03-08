@@ -5,6 +5,9 @@
  */
 package View;
 
+import dao.PatrimonioDAO;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Neto-PC
@@ -18,6 +21,18 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
+        carregarTabela();
+    }
+    
+    private void carregarTabela(){
+        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", 
+            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"}; 
+        
+        DefaultTableModel aModel = (DefaultTableModel) tabRelatPatri.getModel();
+        aModel.setColumnIdentifiers(tableColumnsName); 
+
+        tabRelatPatri.setModel(PatrimonioDAO.readAll(0, aModel));
     }
 
     /**
@@ -45,36 +60,13 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         tabRelatPatri.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
         tabRelatPatri.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"
             }
         ));
+        tabRelatPatri.setEnabled(false);
         jScrollPane1.setViewportView(tabRelatPatri);
         if (tabRelatPatri.getColumnModel().getColumnCount() > 0) {
             tabRelatPatri.getColumnModel().getColumn(0).setPreferredWidth(35);
@@ -93,6 +85,11 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         btnSairRelatPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSairRelatPatri.setForeground(new java.awt.Color(255, 0, 0));
         btnSairRelatPatri.setText("Sair");
+        btnSairRelatPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairRelatPatriActionPerformed(evt);
+            }
+        });
 
         btnImprimirRelatPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnImprimirRelatPatri.setForeground(new java.awt.Color(0, 102, 255));
@@ -132,6 +129,10 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairRelatPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairRelatPatriActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairRelatPatriActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

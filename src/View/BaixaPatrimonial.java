@@ -5,6 +5,9 @@
  */
 package View;
 
+import dao.PatrimonioDAO;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Neto-PC
@@ -18,8 +21,19 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
+        carregarTabela();
     }
+    
+    private void carregarTabela(){
+        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", 
+            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"}; 
+        
+        DefaultTableModel aModel = (DefaultTableModel) tabRelatBaixaPatri.getModel();
+        aModel.setColumnIdentifiers(tableColumnsName); 
 
+        tabRelatBaixaPatri.setModel(PatrimonioDAO.readAll(1, aModel));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +55,11 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         btnSairRelatBaixa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnSairRelatBaixa.setForeground(new java.awt.Color(255, 0, 0));
         btnSairRelatBaixa.setText("Sair");
+        btnSairRelatBaixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSairRelatBaixaActionPerformed(evt);
+            }
+        });
 
         btnImprimirRelatBaixa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnImprimirRelatBaixa.setForeground(new java.awt.Color(0, 102, 255));
@@ -53,36 +72,13 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         tabRelatBaixaPatri.setFont(new java.awt.Font("Arial", 0, 9)); // NOI18N
         tabRelatBaixaPatri.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"
             }
         ));
+        tabRelatBaixaPatri.setEnabled(false);
         jScrollPane1.setViewportView(tabRelatBaixaPatri);
         if (tabRelatBaixaPatri.getColumnModel().getColumnCount() > 0) {
             tabRelatBaixaPatri.getColumnModel().getColumn(0).setPreferredWidth(35);
@@ -132,6 +128,10 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSairRelatBaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairRelatBaixaActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSairRelatBaixaActionPerformed
 
 
 

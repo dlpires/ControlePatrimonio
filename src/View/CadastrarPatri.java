@@ -61,7 +61,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         txtNSerieCadPatri.setText(Integer.toString(patrimonio.getNumSeriePatrimonio()));
         txtNfCadPatri.setText(Integer.toString(patrimonio.getNumNotaFiscal()));
         txtNomeCadPatri.setText(patrimonio.getNomePatrimonio());
-        txtValorCadPatri.setText(Float.toString(patrimonio.getValorPatrimonio()));
+        txtValorCadPatri.setText(String.format("%.2f", patrimonio.getValorPatrimonio()));
     }
     
     private void setPatrimonio(){
@@ -73,11 +73,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
         patrimonio.setNumProcEntrada(Integer.parseInt(txtNProcCadPatri.getText()));
         patrimonio.setNumSeriePatrimonio(Integer.parseInt(txtNSerieCadPatri.getText()));
         patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
-        patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
-        
-        DecimalFormat df = new DecimalFormat("0.00");
-        
-        patrimonio.setValorPatrimonio(Float.parseFloat(df.format(txtValorCadPatri.getValue().floatValue())));
+        patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());       
+        patrimonio.setValorPatrimonio(txtValorCadPatri.getValue().floatValue());
     }
     
     private boolean validateForm(){

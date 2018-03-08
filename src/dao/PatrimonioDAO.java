@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import bean.Patrimonio;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -52,8 +53,9 @@ public class PatrimonioDAO {
             stmt.setInt(2, patrimonio.getNumProcEntrada());
             stmt.setString(3, patrimonio.getNomePatrimonio());
             rs = stmt.executeQuery();
-            rs.next();
-            while(rs.next()) valid = true;
+            while(rs.next()){
+                valid = true;
+            }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
         } finally {
@@ -81,7 +83,52 @@ public class PatrimonioDAO {
         }
         return patrimoniosList;
     }
-
+    
+    public static int countRows(int statusBaixa) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        int count = 0;
+        try {
+            stmt = con.prepareStatement("SELECT * FROM patrimonio WHERE baixa_patrimonio = ?");
+            stmt.setInt(1, statusBaixa);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                count++;
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return count;
+    }
+    
+    public static DefaultTableModel readAll(int statusBaixa, DefaultTableModel aModel) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Object[] patrimoniosList = null;
+        try {
+            stmt = con.prepareStatement("SELECT cod_patrimonio,num_proc_entrada,num_nota_fiscal,nome_patrimonio,marca_patrimonio,modelo_patrimonio,num_serie_patrimonio,descricao_patrimonio,mod_aqu_patrimonio,valor_patrimonio,local_patrimonio FROM patrimonio WHERE baixa_patrimonio = ?");
+            stmt.setInt(1, statusBaixa);
+            rs = stmt.executeQuery();
+            
+            patrimoniosList = new Object[rs.getMetaData().getColumnCount()];
+            while (rs.next()) {
+                for(int i = 0; i < rs.getMetaData().getColumnCount(); i++){
+                    patrimoniosList[i] = rs.getObject(i+1);
+                }
+                aModel.addRow(patrimoniosList);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return aModel;
+    }
+    
     public static void update(Patrimonio patrimonio) {
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
