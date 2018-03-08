@@ -293,17 +293,25 @@ public class CadastrarUser extends javax.swing.JFrame {
 
         switch (action) {
             case "alterar":
+                if(txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())){
                 user.update();
                 btnAlterarUsuario.setEnabled(true);
                 btnExcluirUsuario.setEnabled(true);
                 btnOkCadUser.setEnabled(false);
                 JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Senhas diferentes!");
+                }
                 break;
             case "cadastrar":
                 user.setLoginUsuario(txtLoginCadUser.getText());
+                if(txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())){
                 user.create();
                 this.dispose();
                 JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                }else{
+                    JOptionPane.showMessageDialog(null, "Senhas diferentes!");
+                }
                 break;
             default:
                 this.dispose();

@@ -95,11 +95,8 @@
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblValorCadPatri" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtValorCadPatri" min="-2" pref="268" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="lblValorCadPatri" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="txtLocalCadPatri" min="-2" pref="232" max="-2" attributes="0"/>
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
@@ -173,10 +170,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtModalAquiCadPatri" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                      <Component id="txtLocalCadPatri" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtValorCadPatri" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="txtLocalCadPatri" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -377,12 +371,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBaixaCadPatriActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="JNumberField.JNumberField" name="txtValorCadPatri">
-      <Properties>
-        <Property name="text" type="java.lang.String" value=""/>
-        <Property name="toolTipText" type="java.lang.String" value=""/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

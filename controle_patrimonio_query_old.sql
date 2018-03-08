@@ -2,6 +2,7 @@ create database if not exists controle_patrimonio;
 
 use controle_patrimonio;
 
+
 create table if not exists usuario(
 	login_usuario varchar(20) not null,
     senha_usuario varchar(20) not null,
@@ -14,11 +15,12 @@ create table if not exists usuario(
 );
 
 create table if not exists patrimonio(
-	cod_patrimonio int not null,
+	cod_patrimonio int not null auto_increment,
 	num_proc_entrada int not null,
 	num_nota_fiscal int not null,
 	nome_patrimonio varchar(30) not null,
 	marca_patrimonio varchar(30),
+    descricao_patrimonio varchar(200),
 	modelo_patrimonio varchar(30),
 	num_serie_patrimonio int not null,
 	valor_patrimonio float not null,
