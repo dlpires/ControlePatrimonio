@@ -29,4 +29,8 @@ create table if not exists patrimonio(
 	baixa_patrimonio bit,
     constraint prk_cod_patrimonio primary key (cod_patrimonio)
 );
-ALTER TABLE patrimonio auto_increment = 1000; 
+
+INSERT INTO usuario (login_usuario, senha_usuario, conf_senha_usuario, nome_usuario, funcao_usuario, cell_usuario, nivel_Acesso) VALUES
+('admin', 'admin', 'admin', 'Admin', 'Administrador', '(19) 999999999', 5);
+
+ALTER TABLE patrimonio auto_increment = 100000; 

@@ -76,7 +76,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         patrimonio.setNumSeriePatrimonio(Integer.parseInt(txtNSerieCadPatri.getText()));
         patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
         patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
-        patrimonio.setValorPatrimonio(Float.parseFloat(txtValorCadPatri.getText().replace(",", ".")));
+        patrimonio.setValorPatrimonio(txtValorCadPatri.getValue().floatValue());
     }
 
     private boolean validateForm() {
@@ -147,7 +147,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         btnCancelarCadPatri = new javax.swing.JButton();
         btnAlterarCadPatri = new javax.swing.JButton();
         btnBaixaCadPatri = new javax.swing.JButton();
-        txtValorCadPatri = new javax.swing.JTextField();
+        txtValorCadPatri = new JNumberField.JNumberField();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -286,17 +286,13 @@ public class CadastrarPatri extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtModalAquiCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblValorCadPatri)
-                                        .addGap(255, 255, 255))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtValorCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblValorCadPatri))
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtLocalCadPatri, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11)))
@@ -474,7 +470,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
     private javax.swing.JTextField txtNSerieCadPatri;
     private javax.swing.JTextField txtNfCadPatri;
     private javax.swing.JTextField txtNomeCadPatri;
-    private javax.swing.JTextField txtValorCadPatri;
+    private JNumberField.JNumberField txtValorCadPatri;
     // End of variables declaration//GEN-END:variables
 
 }
