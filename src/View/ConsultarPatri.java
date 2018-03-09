@@ -173,8 +173,15 @@ public class ConsultarPatri extends javax.swing.JFrame {
         patrimonio.setNomePatrimonio(txtNomeConsPatri.getText());
         
         if(PatrimonioDAO.exists(patrimonio)){
-            new CadastrarPatri(PatrimonioDAO.load(patrimonio)).setVisible(true);
-            this.dispose();
+            Patrimonio patri = PatrimonioDAO.load(patrimonio);
+            if(!patri.isBaixaPatrimonio()){
+                new CadastrarPatri(patri).setVisible(true);
+                this.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Patrimônio constado na lista de Baixa Patrimonial!");
+                return;
+            }
         }else{
             JOptionPane.showMessageDialog(null, "Patrimônio não encontrado!");
         }
