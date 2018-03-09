@@ -29,3 +29,4 @@ create table if not exists patrimonio(
 	baixa_patrimonio bit,
     constraint prk_cod_patrimonio primary key (cod_patrimonio)
 );
+AUTO_INCREMENT = 1000; 

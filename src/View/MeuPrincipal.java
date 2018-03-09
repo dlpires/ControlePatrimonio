@@ -37,7 +37,7 @@ public class MeuPrincipal extends javax.swing.JFrame {
         menuUsuario.setVisible(false);
         
         //está desativado porque no momento não possui serventia
-        btnExcluirUsuario.setVisible(false);
+        //btnExcluirUsuario.setVisible(false);
     }
 
     /**
@@ -97,11 +97,6 @@ public class MeuPrincipal extends javax.swing.JFrame {
         menuUsuario.setText("Usuário");
 
         btnCadastrarUsuario.setText("Cadastrar");
-        btnCadastrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCadastrarUsuarioMouseClicked(evt);
-            }
-        });
         btnCadastrarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCadastrarUsuarioActionPerformed(evt);
@@ -110,9 +105,9 @@ public class MeuPrincipal extends javax.swing.JFrame {
         menuUsuario.add(btnCadastrarUsuario);
 
         btnConsultarUsuario.setText("Consultar");
-        btnConsultarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnConsultarUsuarioMouseClicked(evt);
+        btnConsultarUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnConsultarUsuarioMouseMoved(evt);
             }
         });
         btnConsultarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -213,81 +208,52 @@ public class MeuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSairMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairMenuActionPerformed
-        /*new Login().setVisible(true);
-        this.dispose();*/
         System.exit(0);
     }//GEN-LAST:event_btnSairMenuActionPerformed
 
     private void btnExcluirUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirUsuarioActionPerformed
-        ConsultarUser cvu = new ConsultarUser();
-        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cvu.setVisible(true);
+        new ConsultarUser("excluir").setVisible(true);
     }//GEN-LAST:event_btnExcluirUsuarioActionPerformed
 
-    private void btnCadastrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioMouseClicked
-         
-        
-    }//GEN-LAST:event_btnCadastrarUsuarioMouseClicked
-
-    private void btnConsultarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioMouseClicked
-        
-    }//GEN-LAST:event_btnConsultarUsuarioMouseClicked
-
     private void btnCadastrarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarUsuarioActionPerformed
-        CadastrarUser cvu = new CadastrarUser();
-        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cvu.setVisible(true);
+        new CadastrarUser().setVisible(true);
     }//GEN-LAST:event_btnCadastrarUsuarioActionPerformed
 
     private void btnConsultarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioActionPerformed
-        
-        
-        ConsultarUser cvu = new ConsultarUser();
-        cvu.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cvu.setVisible(true);
+        new ConsultarUser("alterar").setVisible(true);
     }//GEN-LAST:event_btnConsultarUsuarioActionPerformed
 
     private void btnCadastrarPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarPatriActionPerformed
-        CadastrarPatri cd = new CadastrarPatri();
-        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cd.setVisible(true);
+        new CadastrarPatri().setVisible(true);
     }//GEN-LAST:event_btnCadastrarPatriActionPerformed
 
     private void btnConsultarPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPatriActionPerformed
-        ConsultarPatri cd = new ConsultarPatri();
-        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cd.setVisible(true);
+        new ConsultarPatri().setVisible(true);
     }//GEN-LAST:event_btnConsultarPatriActionPerformed
 
     private void btnBaixaPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixaPatriActionPerformed
-        ConsultarPatri cd = new ConsultarPatri();
-        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cd.setVisible(true);
+        new ConsultarPatri().setVisible(true);
     }//GEN-LAST:event_btnBaixaPatriActionPerformed
 
     private void btnCadastrarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMenuActionPerformed
-        CadastrarPatri cd = new CadastrarPatri();
-        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cd.setVisible(true);
+        new CadastrarPatri().setVisible(true);
     }//GEN-LAST:event_btnCadastrarMenuActionPerformed
 
     private void btnConsultarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarMenuActionPerformed
-        ConsultarPatri cd = new ConsultarPatri();
-        cd.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        cd.setVisible(true);
+        new ConsultarPatri().setVisible(true);
     }//GEN-LAST:event_btnConsultarMenuActionPerformed
 
     private void btnPatriRelatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPatriRelatActionPerformed
-        RelatorioPatrimonio rp = new RelatorioPatrimonio();
-        rp.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        rp.setVisible(true);
+        new RelatorioPatrimonio().setVisible(true);
     }//GEN-LAST:event_btnPatriRelatActionPerformed
 
     private void btnBaixaPatriRelatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaixaPatriRelatActionPerformed
-        BaixaPatrimonial rp = new BaixaPatrimonial();
-        rp.setDefaultCloseOperation( JFrame.DISPOSE_ON_CLOSE );
-        rp.setVisible(true);
+        new BaixaPatrimonial().setVisible(true);
     }//GEN-LAST:event_btnBaixaPatriRelatActionPerformed
+
+    private void btnConsultarUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarUsuarioMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarUsuarioMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

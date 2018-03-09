@@ -25,7 +25,8 @@ public class CadastrarUser extends javax.swing.JFrame {
     public CadastrarUser() {
         initComponents();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         action = "cadastrar";
 
@@ -33,32 +34,57 @@ public class CadastrarUser extends javax.swing.JFrame {
         btnExcluirUsuario.setVisible(false);
     }
 
-    public CadastrarUser(Usuario user) {
+     public CadastrarUser(Usuario user, String action) {
         initComponents();
         setLocationRelativeTo(null);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         this.user = user;
         inicializarCampos();
-
-        btnOkCadUser.setEnabled(false);
-        txtLoginCadUser.setEnabled(false);
         
-        action = "alterar";
+        this.action = action;
+
+        switch (action) {
+            case "alterar":
+                
+                txtLoginCadUser.setEnabled(false);
+                btnExcluirUsuario.setVisible(false);
+                
+                this.setTitle("Consulta de Usuário");
+                
+                break;
+            case "excluir":
+                txtLoginCadUser.setEnabled(false);
+                txtSenhaCadUser.setEnabled(false);
+                txtNomeCadUser.setEnabled(false);
+                txtConfSenhaCadUser.setEnabled(false);
+                txtFuncaoCadUser.setEnabled(false);
+                txtCelCadUser.setEnabled(false);
+                cbNivelAcessoCadUser.setEnabled(false);
+                btnOkCadUser.setVisible(false);
+                btnAlterarUsuario.setVisible(false);
+                btnLimparCadUser.setVisible(false);
+                this.setTitle("Excluir de Usuário");
+                break;
+
+        }
+        
+
     }
 
-    private boolean validateForm(){
-        if (txtSenhaCadUser.getText().equals("") ||
-            txtConfSenhaCadUser.getText().equals("") ||
-            txtNomeCadUser.getText().equals("") ||
-            txtFuncaoCadUser.getText().equals("") ||
-            txtCelCadUser.getText().equals("")){
+    private boolean validateForm() {
+        if (txtSenhaCadUser.getText().equals("")
+                || txtConfSenhaCadUser.getText().equals("")
+                || txtNomeCadUser.getText().equals("")
+                || txtFuncaoCadUser.getText().equals("")
+                || txtCelCadUser.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             return false;
         }
-        
+
         return true;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -273,17 +299,17 @@ public class CadastrarUser extends javax.swing.JFrame {
         } else {
             this.dispose();
         }*/
-        
+
         this.dispose();
 
     }//GEN-LAST:event_btnCancelarCadUserActionPerformed
 
     private void btnOkCadUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadUserActionPerformed
 
-        if(!validateForm()){
+        if (!validateForm()) {
             return;
         }
-        
+
         user.setSenhaUsuario(txtSenhaCadUser.getText());
         user.setConfSenhaUsuario(txtConfSenhaCadUser.getText());
         user.setNomeUsuario(txtNomeCadUser.getText());
@@ -293,23 +319,23 @@ public class CadastrarUser extends javax.swing.JFrame {
 
         switch (action) {
             case "alterar":
-                if(txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())){
-                user.update();
-                btnAlterarUsuario.setEnabled(true);
-                btnExcluirUsuario.setEnabled(true);
-                btnOkCadUser.setEnabled(false);
-                JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
-                }else{
+                if (txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())) {
+                    user.update();
+                    btnAlterarUsuario.setEnabled(true);
+                    btnExcluirUsuario.setEnabled(true);
+                    btnOkCadUser.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "Usuário alterado com sucesso!");
+                } else {
                     JOptionPane.showMessageDialog(null, "Senhas diferentes!");
                 }
                 break;
             case "cadastrar":
                 user.setLoginUsuario(txtLoginCadUser.getText());
-                if(txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())){
-                user.create();
-                this.dispose();
-                JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
-                }else{
+                if (txtSenhaCadUser.getText().equals(txtConfSenhaCadUser.getText())) {
+                    user.create();
+                    this.dispose();
+                    JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso!");
+                } else {
                     JOptionPane.showMessageDialog(null, "Senhas diferentes!");
                 }
                 break;

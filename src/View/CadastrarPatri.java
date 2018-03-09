@@ -26,7 +26,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
     public CadastrarPatri() {
         initComponents();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         action = "cadastrar";
         
@@ -39,7 +40,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
     public CadastrarPatri(Patrimonio patrimonio) {
         initComponents();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         this.patrimonio = patrimonio;
         inicializarCampos();

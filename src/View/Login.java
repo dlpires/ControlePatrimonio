@@ -6,6 +6,7 @@
 package View;
 
 import bean.Usuario;
+import com.sun.glass.events.KeyEvent;
 import dao.UsuarioDAO;
 import javax.swing.JOptionPane;
 
@@ -62,6 +63,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        txtSenhaLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaLoginKeyPressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +112,16 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarLoginMouseClicked
-        // TODO add your handling code here:
+        this.login();
+    }//GEN-LAST:event_btnEntrarLoginMouseClicked
+
+    private void txtSenhaLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaLoginKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            this.login();
+        }
+    }//GEN-LAST:event_txtSenhaLoginKeyPressed
+
+    private void login(){
         if(Usuario.doLogin(txtUsuarioLogin.getText(), txtSenhaLogin.getText())){
 
             new MeuPrincipal(UsuarioDAO.load(txtUsuarioLogin.getText())).setVisible(true);
@@ -113,8 +129,7 @@ public class Login extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, "Acesso negado!");
         }
-    }//GEN-LAST:event_btnEntrarLoginMouseClicked
-
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrarLogin;

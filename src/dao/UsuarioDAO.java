@@ -41,7 +41,7 @@ public class UsuarioDAO {
         
     }
     
-    public static boolean exists(String user){
+    public static boolean existsByUser(String user){
         boolean valid = false;
         Connection con = ConnectionFactory.getConnection();
         PreparedStatement stmt = null;
@@ -59,6 +59,27 @@ public class UsuarioDAO {
             ConnectionFactory.closeConnection(con, stmt, rs);
         }
         return valid;
+        
+    }
+    
+    public static String existsByName(String name){
+        String nameFound = "";
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = con.prepareStatement("SELECT login_usuario FROM usuario WHERE nome_usuario = ?");
+            stmt.setString(1, name);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+              nameFound = rs.getString("login_usuario"); 
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro de Leitura: " + ex.getMessage());
+        } finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        }
+        return nameFound;
         
     }
 

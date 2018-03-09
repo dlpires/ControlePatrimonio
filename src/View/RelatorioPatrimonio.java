@@ -20,7 +20,8 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
     public RelatorioPatrimonio() {
         initComponents();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
         carregarTabela();
     }

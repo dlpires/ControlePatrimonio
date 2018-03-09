@@ -22,7 +22,8 @@ public class ConsultarPatri extends javax.swing.JFrame {
     public ConsultarPatri() {
         initComponents();
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
     
     private boolean validateForm(){
