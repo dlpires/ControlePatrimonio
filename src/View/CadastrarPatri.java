@@ -366,6 +366,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
             setPatrimonio();
             patrimonio.setBaixaPatrimonio(true);
             patrimonio.Alterar();
+            this.dispose();
             JOptionPane.showMessageDialog(null, "Baixa Patrimonial realizada com sucesso!");
         }
         else if (escolha == JOptionPane.NO_OPTION){
