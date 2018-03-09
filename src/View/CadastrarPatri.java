@@ -19,7 +19,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
 
     String action = "";
     Patrimonio patrimonio = new Patrimonio();
-    
+
     /**
      * Creates new form Cadastrar
      */
@@ -28,15 +28,15 @@ public class CadastrarPatri extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         action = "cadastrar";
-        
+
         txtCodCadPatri.setEnabled(false);
         btnBaixaCadPatri.setVisible(false);
         btnAlterarCadPatri.setVisible(false);
-        
+
     }
-    
+
     public CadastrarPatri(Patrimonio patrimonio) {
         initComponents();
         setLocationRelativeTo(null);
@@ -48,7 +48,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
 
         txtCodCadPatri.setEnabled(false);
         btnOkCadPatri.setEnabled(false);
-        
+
         action = "alterar";
     }
 
@@ -65,8 +65,8 @@ public class CadastrarPatri extends javax.swing.JFrame {
         txtNomeCadPatri.setText(patrimonio.getNomePatrimonio());
         txtValorCadPatri.setText(String.format("%.2f", patrimonio.getValorPatrimonio()));
     }
-    
-    private void setPatrimonio(){
+
+    private void setPatrimonio() {
         patrimonio.setDescricaoPatrimonio(txtDescricaoCadPatri.getText());
         patrimonio.setLocalPatrimonio(txtLocalCadPatri.getText());
         patrimonio.setMarcaPatrimonio(txtMarcaCadPatri.getText());
@@ -75,43 +75,42 @@ public class CadastrarPatri extends javax.swing.JFrame {
         patrimonio.setNumProcEntrada(Integer.parseInt(txtNProcCadPatri.getText()));
         patrimonio.setNumSeriePatrimonio(Integer.parseInt(txtNSerieCadPatri.getText()));
         patrimonio.setNumNotaFiscal(Integer.parseInt(txtNfCadPatri.getText()));
-        patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());       
+        patrimonio.setNomePatrimonio(txtNomeCadPatri.getText());
         patrimonio.setValorPatrimonio(Float.parseFloat(txtValorCadPatri.getText().replace(",", ".")));
     }
-    
-    private boolean validateForm(){
-        if (txtDescricaoCadPatri.getText().equals("") ||
-            txtMarcaCadPatri.getText().equals("") ||
-            txtModalAquiCadPatri.getText().equals("") ||
-            txtModeloCadPatri.getText().equals("") ||
-            txtNProcCadPatri.getText().equals("") ||
-            txtNSerieCadPatri.getText().equals("") ||
-            txtNfCadPatri.getText().equals("") ||
-            txtNomeCadPatri.getText().equals("")  ||
-            txtValorCadPatri.getText().equals("")){
+
+    private boolean validateForm() {
+        if (txtDescricaoCadPatri.getText().equals("")
+                || txtMarcaCadPatri.getText().equals("")
+                || txtModalAquiCadPatri.getText().equals("")
+                || txtModeloCadPatri.getText().equals("")
+                || txtNProcCadPatri.getText().equals("")
+                || txtNSerieCadPatri.getText().equals("")
+                || txtNfCadPatri.getText().equals("")
+                || txtNomeCadPatri.getText().equals("")
+                || txtValorCadPatri.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Preencha todos os campos!");
             return false;
         }
-    
 
-        
-        if(!txtNProcCadPatri.getText().matches("[0-9]+")){
-            JOptionPane.showMessageDialog(null, "Campo "+ lblNProcCadPatri.getText() +" com dados inválidos!");
+        if (!txtNProcCadPatri.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Campo " + lblNProcCadPatri.getText() + " com dados inválidos!");
             return false;
         }
-        
-        if(!txtNSerieCadPatri.getText().matches("[0-9]+")){
-            JOptionPane.showMessageDialog(null, "Campo "+ lblNSerieCadPatri.getText() +" com dados inválidos!");
+
+        if (!txtNSerieCadPatri.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Campo " + lblNSerieCadPatri.getText() + " com dados inválidos!");
             return false;
         }
-        
-        if(!txtNfCadPatri.getText().matches("[0-9]+")){
-            JOptionPane.showMessageDialog(null, "Campo "+ lblNfCadPatri.getText() +" com dados inválidos!");
+
+        if (!txtNfCadPatri.getText().matches("[0-9]+")) {
+            JOptionPane.showMessageDialog(null, "Campo " + lblNfCadPatri.getText() + " com dados inválidos!");
             return false;
         }
-        
+
         return true;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -377,8 +376,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
             patrimonio.Alterar();
             this.dispose();
             JOptionPane.showMessageDialog(null, "Baixa Patrimonial realizada com sucesso!");
-        }
-        else if (escolha == JOptionPane.NO_OPTION){
+        } else if (escolha == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(null, "Baixa Patrimonial não realizada!");
         }
     }//GEN-LAST:event_btnBaixaCadPatriActionPerformed
@@ -390,14 +388,14 @@ public class CadastrarPatri extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAlterarCadPatriActionPerformed
 
     private void btnOkCadPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkCadPatriActionPerformed
-        
-        if(!validateForm()){
+
+        if (!validateForm()) {
             return;
         }
-        
+
         patrimonio.setBaixaPatrimonio(false);
         setPatrimonio();
-        
+
         switch (action) {
             case "alterar":
                 patrimonio.Alterar();
@@ -447,7 +445,7 @@ public class CadastrarPatri extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelarCadPatriActionPerformed
 
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterarCadPatri;
     private javax.swing.JButton btnBaixaCadPatri;

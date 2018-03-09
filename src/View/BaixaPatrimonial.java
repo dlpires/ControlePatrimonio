@@ -5,7 +5,14 @@
  */
 package View;
 
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 import dao.PatrimonioDAO;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -65,6 +72,11 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         btnImprimirRelatBaixa.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnImprimirRelatBaixa.setForeground(new java.awt.Color(0, 102, 255));
         btnImprimirRelatBaixa.setText("Imprimir");
+        btnImprimirRelatBaixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirRelatBaixaActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setText("RELATÓRIO DE BAIXA PATRIMONIAL");
@@ -133,6 +145,15 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
     private void btnSairRelatBaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairRelatBaixaActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSairRelatBaixaActionPerformed
+
+    private void btnImprimirRelatBaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirRelatBaixaActionPerformed
+        try {
+            tabRelatBaixaPatri.print(JTable.PrintMode.FIT_WIDTH,new MessageFormat("Relatório de baixa patrimonial"),null);
+            JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+        } catch (PrinterException ex) {
+            Logger.getLogger(BaixaPatrimonial.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirRelatBaixaActionPerformed
 
 
 

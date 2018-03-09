@@ -6,6 +6,12 @@
 package View;
 
 import dao.PatrimonioDAO;
+import java.awt.print.PrinterException;
+import java.text.MessageFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -95,6 +101,11 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         btnImprimirRelatPatri.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btnImprimirRelatPatri.setForeground(new java.awt.Color(0, 102, 255));
         btnImprimirRelatPatri.setText("Imprimir");
+        btnImprimirRelatPatri.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImprimirRelatPatriActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,6 +145,15 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
     private void btnSairRelatPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairRelatPatriActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnSairRelatPatriActionPerformed
+
+    private void btnImprimirRelatPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirRelatPatriActionPerformed
+        try {
+            tabRelatPatri.print(JTable.PrintMode.FIT_WIDTH,new MessageFormat("Relatório patrimonial"),null);
+            JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+        } catch (PrinterException ex) {
+            Logger.getLogger(RelatorioPatrimonio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnImprimirRelatPatriActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

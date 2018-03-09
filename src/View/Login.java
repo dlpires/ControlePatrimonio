@@ -116,17 +116,17 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarLoginMouseClicked
 
     private void txtSenhaLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaLoginKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.login();
         }
     }//GEN-LAST:event_txtSenhaLoginKeyPressed
 
-    private void login(){
-        if(Usuario.doLogin(txtUsuarioLogin.getText(), txtSenhaLogin.getText())){
+    private void login() {
+        if (Usuario.doLogin(txtUsuarioLogin.getText(), txtSenhaLogin.getText())) {
 
             new MeuPrincipal(UsuarioDAO.load(txtUsuarioLogin.getText())).setVisible(true);
             this.dispose();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Acesso negado!");
         }
     }

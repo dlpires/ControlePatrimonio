@@ -13,29 +13,31 @@ import bean.Usuario;
  * @author Neto-PC
  */
 public class MeuPrincipal extends javax.swing.JFrame {
+
     Usuario userON;
+
     /**
      * Creates new form MeuPrincipal
      */
     public MeuPrincipal() {
         initialize();
     }
-    
+
     public MeuPrincipal(Usuario userON) {
         initialize();
-        
+
         this.userON = userON;
-        if(this.userON.getNivelAcesso() == 5){
+        if (this.userON.getNivelAcesso() == 5) {
             menuUsuario.setVisible(true);
         }
     }
-    
-    private void initialize(){
+
+    private void initialize() {
         initComponents();
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         menuUsuario.setVisible(false);
-        
+
         //está desativado porque no momento não possui serventia
         //btnExcluirUsuario.setVisible(false);
     }

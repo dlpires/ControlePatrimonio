@@ -34,24 +34,24 @@ public class CadastrarUser extends javax.swing.JFrame {
         btnExcluirUsuario.setVisible(false);
     }
 
-     public CadastrarUser(Usuario user, String action) {
+    public CadastrarUser(Usuario user, String action) {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         this.user = user;
         inicializarCampos();
-        
+
         this.action = action;
 
         switch (action) {
             case "alterar":
-                
+
                 txtLoginCadUser.setEnabled(false);
                 btnExcluirUsuario.setVisible(false);
-                
+
                 this.setTitle("Consulta de Usuário");
-                
+
                 break;
             case "excluir":
                 txtLoginCadUser.setEnabled(false);
@@ -68,7 +68,6 @@ public class CadastrarUser extends javax.swing.JFrame {
                 break;
 
         }
-        
 
     }
 

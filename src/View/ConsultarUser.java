@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
  * @author Neto-PC
  */
 public class ConsultarUser extends javax.swing.JFrame {
+
     String action;
+
     /**
      * Creates new form Consultar
      */
@@ -22,18 +24,16 @@ public class ConsultarUser extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
     }
-    
+
     public ConsultarUser(String action) {
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         this.action = action;
-        
-        
-        
+
     }
 
     /**
@@ -142,19 +142,19 @@ public class ConsultarUser extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparConsUserActionPerformed
 
     private void btnBuscarConsUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarConsUserActionPerformed
-        if(UsuarioDAO.existsByUser(txtLoginConsUser.getText())){
-            new CadastrarUser(UsuarioDAO.load(txtLoginConsUser.getText()),action).setVisible(true);
+        if (UsuarioDAO.existsByUser(txtLoginConsUser.getText())) {
+            new CadastrarUser(UsuarioDAO.load(txtLoginConsUser.getText()), action).setVisible(true);
             this.dispose();
-        }else{
+        } else {
             String login = UsuarioDAO.existsByName(txtNomeConsUser.getText());
-            if(!login.equals("")){
-                new CadastrarUser(UsuarioDAO.load(login),action).setVisible(true);
+            if (!login.equals("")) {
+                new CadastrarUser(UsuarioDAO.load(login), action).setVisible(true);
                 this.dispose();
-            }else{   
+            } else {
                 JOptionPane.showMessageDialog(null, "Usuário não encontrado!");
             }
         }
-        
+
     }//GEN-LAST:event_btnBuscarConsUserActionPerformed
 
 
