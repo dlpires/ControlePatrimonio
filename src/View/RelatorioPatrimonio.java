@@ -28,16 +28,16 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         carregarTabela();
     }
-    
-    private void carregarTabela(){
-        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", 
-            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"}; 
-        
+
+    private void carregarTabela() {
+        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal",
+            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"};
+
         DefaultTableModel aModel = (DefaultTableModel) tabRelatPatri.getModel();
-        aModel.setColumnIdentifiers(tableColumnsName); 
+        aModel.setColumnIdentifiers(tableColumnsName);
 
         tabRelatPatri.setModel(PatrimonioDAO.readAll(0, aModel));
     }
@@ -148,8 +148,9 @@ public class RelatorioPatrimonio extends javax.swing.JFrame {
 
     private void btnImprimirRelatPatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirRelatPatriActionPerformed
         try {
-            tabRelatPatri.print(JTable.PrintMode.FIT_WIDTH,new MessageFormat("Relatório patrimonial"),null);
-            JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+            if (tabRelatPatri.print(JTable.PrintMode.FIT_WIDTH, new MessageFormat("Relatório patrimonial"), null)) {
+                JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+            }
         } catch (PrinterException ex) {
             Logger.getLogger(RelatorioPatrimonio.class.getName()).log(Level.SEVERE, null, ex);
         }

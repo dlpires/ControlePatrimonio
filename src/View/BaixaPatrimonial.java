@@ -29,19 +29,20 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         //setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
+
         carregarTabela();
     }
-    
-    private void carregarTabela(){
-        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal", 
-            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"}; 
-        
+
+    private void carregarTabela() {
+        String[] tableColumnsName = {"Código", "Nº Proc.de Entrada", "Nº Nota Fiscal",
+            "Nome", "Marca", "Modelo", "Nº Série", "Descrição", "Mod. Aquisição", "Valor", "Local"};
+
         DefaultTableModel aModel = (DefaultTableModel) tabRelatBaixaPatri.getModel();
-        aModel.setColumnIdentifiers(tableColumnsName); 
+        aModel.setColumnIdentifiers(tableColumnsName);
 
         tabRelatBaixaPatri.setModel(PatrimonioDAO.readAll(1, aModel));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,13 +149,14 @@ public class BaixaPatrimonial extends javax.swing.JFrame {
 
     private void btnImprimirRelatBaixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirRelatBaixaActionPerformed
         try {
-            tabRelatBaixaPatri.print(JTable.PrintMode.FIT_WIDTH,new MessageFormat("Relatório de baixa patrimonial"),null);
-            JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+            if (tabRelatBaixaPatri.print(JTable.PrintMode.FIT_WIDTH, new MessageFormat("Relatório de baixa patrimonial"), null)) {
+                JOptionPane.showMessageDialog(null, "Impressão realizada com sucesso!");
+            }
+
         } catch (PrinterException ex) {
             Logger.getLogger(BaixaPatrimonial.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnImprimirRelatBaixaActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
